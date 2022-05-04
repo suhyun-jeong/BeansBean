@@ -2,6 +2,8 @@ package com.dto;
 
 import java.sql.Date;
 
+import org.apache.ibatis.type.Alias;
+@Alias("Cook_BrdDTO")
 public class Cook_BrdDTO {
 	private int num;
 	private String userid;

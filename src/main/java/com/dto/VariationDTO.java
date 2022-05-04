@@ -1,5 +1,8 @@
 package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("VariationDTO")
 public class VariationDTO {
 	private int num;
 	private String gcode;

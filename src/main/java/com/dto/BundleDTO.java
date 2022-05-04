@@ -1,5 +1,8 @@
 package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("BundleDTO")
 public class BundleDTO {
 	private int num;
 	private String gcode;

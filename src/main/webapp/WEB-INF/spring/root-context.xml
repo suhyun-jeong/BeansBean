@@ -30,7 +30,15 @@
 		<!-- <property name="typeAliasesPackage" value="com.test" /> -->
 		<property name="typeAliases">
 			<list>
-				<value>com.dto.MemberDTO</value><!-- dto클래스에서 alias명 지정 @Alias('alias명') -->
+				<value>com.dto.BundleDTO</value><!-- dto클래스에서 alias명 지정 @Alias('alias명') -->
+				<value>com.dto.CartDTO</value>
+				<value>com.dto.Cook_BrdDTO</value>
+				<value>com.dto.GoodsDTO</value>
+				<value>com.dto.Info_BrdDTO</value>
+				<value>com.dto.IngrementDTO</value>
+				<value>com.dto.MemberDTO</value>
+				<value>com.dto.OrderinfoDTO</value>
+				<value>com.dto.VariationDTO</value>
 			</list>
 		</property>
 	</bean>

@@ -1,5 +1,8 @@
 package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("GoodsDTO")
 public class GoodsDTO {
 	private String gcode;
 	private String gcategory;

@@ -2,6 +2,8 @@ package com.dto;
 
 import java.sql.Date;
 
+import org.apache.ibatis.type.Alias;
+@Alias("OrderinfoDTO")
 public class OrderinfoDTO {
 	private int num;
 	private String userid;
