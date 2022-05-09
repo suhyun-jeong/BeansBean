@@ -1,8 +1,11 @@
 package com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.MemberDTO;
 import com.service.MemberService;
@@ -16,19 +19,26 @@ public class UserInfoController {
 	
 	// 마이페이지
 	@RequestMapping(value="/mypage")
-	public String myPage() {
-		MemberDTO userInfo = service.getUserInfo();
-		System.out.println(userInfo);
+	public ModelAndView myPage(HttpSession session) {
+		MemberDTO loginUser = (MemberDTO) session.getAttribute("login");
+		MemberDTO userInfo = service.getUserInfo(loginUser.getUserid());
 		
-		return "myPage";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userInfo", userInfo);
+		mav.setViewName("myPage");
+		
+		return mav;
 	}
 	
 	// 회원 정보 수정
 	@RequestMapping(value="/userInfoUpdate")
-	public String userInfoUpdate() {
-		System.out.println("업데이트 완료");
+	public String userInfoUpdate(MemberDTO input, HttpSession session) {
+		int updatedMember = service.userInfoUpdate(input);
+		System.out.println("member update: " + updatedMember);
 		
-		return "main";
+		session.setAttribute("userInfoMsg", "회원 정보가 수정되었습니다.");
+		
+		return "redirect:mypage";
 	}
 	
 }

@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <!-- 회원 정보 화면 -->
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ page import="com.dto.MemberDTO" %>
+
 <style type="text/css">
 	th {
 		text-align:right;
@@ -30,14 +35,27 @@
 	});
 </script>
 
+<!-- 회원 정보 수정 완료 후 -->
+<c:if test="${not empty userInfoMsg}">
+	<script type="text/javascript">alert("${userInfoMsg}")</script>
+	<% session.removeAttribute("userInfoMsg"); %>
+</c:if>
+
+<% MemberDTO userInfo = (MemberDTO) request.getAttribute("userInfo"); %>
+
 <!-- 회원 정보 폼 -->
 <form action="userInfoUpdate" method="post">
 	<table>
 		<tr>
 			<th>아이디</th>
 			<td>
-				abc123
-				<span style="margin-left:20px;">(일반 회원)</span>
+				${userInfo.userid}
+				<input type="hidden" name="userid" value="${userInfo.userid}">
+				<span style="margin-left:20px;">
+					<c:if test="${userInfo.usercode == 10}">(관리자)</c:if>
+					<c:if test="${userInfo.usercode == 20}">(일반 회원)</c:if>
+					<c:if test="${userInfo.usercode == 30}">(사업자 회원)</c:if>
+				</span>
 			</td>
 		</tr>
 		
@@ -45,7 +63,7 @@
 		
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="username" id="username" placeholder="이름 " size="6"></td>
+			<td><input type="text" name="username" id="username" placeholder="이름 " size="6" value="${userInfo.username}"></td>
 		</tr>
 		
 		<tr><td colspan="3"><hr></td></tr>
@@ -53,10 +71,10 @@
 		<tr>
 			<th>주소</th>
 			<td>
-				<input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5">
+				<input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5" value="${userInfo.post}">
 				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
-				<input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
+				<input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소" value="${userInfo.addr1}">
+				<input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소" value="${userInfo.addr2}">
 				<span id="guide" style="color:#999"></span>
 			</td>
 		</tr>
@@ -67,13 +85,13 @@
 			<th>전화번호</th>
 			<td>
 				<select name="phone1" id="phone1" class="phoneNumber">
-					<option value="010">010</option>
-					<option value="011">011</option>
+					<option value="010" <c:if test="${userInfo.phone1 == 010}">selected="selected"</c:if>>010</option>
+					<option value="011" <c:if test="${userInfo.phone1 == 011}">selected="selected"</c:if>>011</option>
 				</select>
 				-
-				<input type="text" name="phone2" id="phone2" class="phoneNumber" size="4" maxlength="4">
+				<input type="text" name="phone2" id="phone2" class="phoneNumber" size="4" maxlength="4" value="${userInfo.phone2}">
 				-
-				<input type="text" name="phone3" id="phone3" class="phoneNumber" size="4" maxlength="4">
+				<input type="text" name="phone3" id="phone3" class="phoneNumber" size="4" maxlength="4" value="${userInfo.phone3}">
 			</td>
 		</tr>
 		
@@ -82,12 +100,12 @@
 		<tr>
 			<th>이메일</th>
 			<td>
-				<input type="text" name="email1" id="email1" class="emailAddress" size="12">
+				<input type="text" name="email1" id="email1" class="emailAddress" value="${userInfo.email1}">
 				@
-				<input type="text" name="email2" id="email2" class="emailAddress" placeholder="도메인">
+				<input type="text" name="email2" id="email2" class="emailAddress" placeholder="도메인" value="${userInfo.email2}">
 				<select id="emailSelect" class="emailAddress">
-					<option value="daum.net">daum.net</option>
-					<option value="naver.com">naver.com</option>
+					<option value="daum.net" <c:if test="${userInfo.email2 == 'daum.net'}">selected="selected"</c:if>>daum.net</option>
+					<option value="naver.com" <c:if test="${userInfo.email2 == 'naver.com'}">selected="selected"</c:if>>naver.com</option>
 				</select>
 			</td>
 		</tr>

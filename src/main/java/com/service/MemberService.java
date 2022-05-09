@@ -23,8 +23,13 @@ public class MemberService {
 	}
 	
 	// 회원 정보 가져오기
-	public MemberDTO getUserInfo() {
-		return null;
+	public MemberDTO getUserInfo(String userid) {
+		return dao.getUserInfo(userid);
+	}
+
+	// 회원 정보 수정
+	public int userInfoUpdate(MemberDTO mDTO) {
+		return dao.userInfoUpdate(mDTO);
 	}
 
 }

@@ -7,9 +7,15 @@
 
 <!-- 로그인되어있을 때 -->
 <c:if test="${not empty login}">
+	<p><b>${login.username}</b> 님</p>
+	
 	<a href="logout">로그아웃</a>
 	<a href="mypage">마이페이지</a>
 	<a href="">장바구니</a>
+	
+	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
+		<a href="">판매 관리</a>
+	</c:if>
 </c:if>
 
 <!-- 로그인되어있지 않을 때 -->

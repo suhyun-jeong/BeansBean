@@ -41,8 +41,7 @@ public class MemberController {
 		
 		MemberDTO mDTO = service.idpwCheck(map);
 		if (mDTO != null) {
-			session.setAttribute("login", map.get("userid"));
-			//System.out.println(mDTO);
+			session.setAttribute("login", mDTO);
 			
 			return "main";
 		} else {

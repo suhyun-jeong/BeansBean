@@ -22,4 +22,14 @@ public class MemberDAO {
 	public MemberDTO idpwCheck(Map<String, String> map) {
 		return session.selectOne("MemberMapper.idpwCheck", map);
 	}
+
+	// 회원 정보 가져오기
+	public MemberDTO getUserInfo(String userid) {
+		return session.selectOne("MemberMapper.getUserInfo", userid);
+	}
+
+	// 회원 정보 수정
+	public int userInfoUpdate(MemberDTO mDTO) {
+		return session.update("MemberMapper.userInfoUpdate", mDTO);
+	}
 }
