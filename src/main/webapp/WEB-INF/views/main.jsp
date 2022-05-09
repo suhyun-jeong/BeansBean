@@ -14,6 +14,10 @@
 <body>
 <H1>메인화면입니다.</H1>
 
+	<jsp:include page="common/top.jsp" flush="true" />	<!-- 상단 메뉴 바 -->
 
+	<hr>
+	
+	로그인 여부: <%= session.getAttribute("login") %>
 </body>
 </html>

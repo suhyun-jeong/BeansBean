@@ -10,6 +10,11 @@
      values( #{userid},#{passwd},#{username},#{usercode},#{post},#{addr1},#{addr2},
               #{phone1},#{phone2},#{phone3},#{email1},#{email2} )
    </insert>
+   
+	<!-- id, pw 체크 -->
+	<select id="idpwCheck" parameterType="Map" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE USERID = #{userid} AND PASSWD = #{passwd}
+	</select>
 
 <!-- <select id="idCheck" parameterType="String" resultType="int">
 select count(*) from member where userid = #{userid}

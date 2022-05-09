@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,14 @@ public class MemberService {
 		return dao.memeberAdd(m);
 	}
 
+	// 아이디 및 비밀번호 확인
+	public MemberDTO idpwCheck(Map<String, String> map) {
+		return dao.idpwCheck(map);
+	}
+	
+	// 회원 정보 가져오기
+	public MemberDTO getUserInfo() {
+		return null;
+	}
 
 }
