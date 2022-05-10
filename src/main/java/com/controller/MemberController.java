@@ -1,17 +1,14 @@
 package com.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dto.MemberDTO;
 import com.service.MemberService;
@@ -34,6 +31,32 @@ public class MemberController {
 		int n = service.memberAdd(m);
 		System.out.println("insert 갯수: "+n);
 		model.addAttribute("success","회원가입 성공!");
+		return "main";
+	}
+	
+	// 로그인
+	@RequestMapping(value="/login")
+	public String login(HttpSession session, @RequestParam Map<String, String> map) {
+		//System.out.println(map.get("userid") + "\t" + map.get("passwd"));
+		
+		MemberDTO mDTO = service.idpwCheck(map);
+		if (mDTO != null) {
+			session.setAttribute("login", mDTO);
+			
+			return "main";
+		} else {
+			session.setAttribute("loginMsg", "아이디와 비밀번호를 확인해주세요.");
+			
+			return "redirect:loginForm";
+		}
+	}
+	
+	// 로그아웃
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+		if (session.getAttribute("login") != null)
+			session.removeAttribute("login");
+		
 		return "main";
 	}
 	
