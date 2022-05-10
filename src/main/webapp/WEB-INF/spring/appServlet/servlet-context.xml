@@ -12,7 +12,6 @@
 <mvc:annotation-driven></mvc:annotation-driven>
 <mvc:default-servlet-handler/>
 
-
 <!-- <mvc:view-controller path="/" view-name="main"/>  --><!-- /요청 main.jsp => controller에 생성 -->
 <mvc:view-controller path="/" view-name="main"/>
 <mvc:view-controller path="goodsinsert" view-name="insertGoods"/>

@@ -44,11 +44,11 @@
 		
 	});//end ready 
 	
-		async function submit() {//동기로 구현
-			await goodsInsert();
-			insertBundle();
+		 function submit() {//동기로 구현
+			goodsInsert();
+			imageUpload();	
 			insertVariation();
-			imageUpload();
+			insertBundle();
 			location.href = "goodsinsert"; //후에 변경완료페이지로 이동
 		}
 		
@@ -59,7 +59,8 @@
 	    		type : 'post', 
 	    		url : 'insertGoods', 
 	    		data : queryString, 
-	    		dataType : 'json' 
+	    		dataType : 'json' ,
+	    		async:false
 	    		});
 	  
 	    }
@@ -92,6 +93,7 @@
 			data: form, 
 			contentType : false,
 			processData : false,
+			async:false,
 			success: function (data,status,xhr) {
 			},
 			error: function(xhr,status,error) {
@@ -106,6 +108,7 @@
 		$.ajax({
 			url:"insertVariation",
 			type: "get",
+			async:false,
 			data: {gcode: $("#gcode").val() , vcategory : $(this).val()}, 
 			dataType: "text",
 			success: function (data,status,xhr) {
@@ -124,6 +127,7 @@
 		$.ajax({
 			url:"insertBundle",
 			type: "get",
+			async:false,
 			data: {gcode: $("#gcode").val(), bcategory : $("#bcategory"+i).val(), bprice: $("#bprice"+i).val()}, 
 			dataType: "text",
 			success: function (data,status,xhr) {
