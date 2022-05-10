@@ -50,7 +50,7 @@ ${goodsDetail}
 					</tr>
 
 					<tr>
-						<td rowspan="7"><img src="images/${goodsDetail.gimage}.png"
+						<td rowspan="7"><img src="images/${goodsDetail.gimage}"
 							border="0" align="center" width="300" /></td>
 						<td class="td_title">제품코드</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'>
