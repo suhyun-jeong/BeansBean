@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodsMapper">
+
+<select id="goodsList" resultType="GoodsDTO" parameterType="string">
+	select gCode,gcategory,gName,gPrice,gAmount,gImage
+	from goods
+	where gcategory = #{gcategory}
+</select>
+
+<select id="goodsDetail" resultType="GoodsDTO" parameterType="string">
+	select gCode,gcategory,gName,gPrice,gAmount,gImage
+	from goods
+	where gcode = #{gcode}
+</select>
+
+</mapper>
