@@ -15,6 +15,7 @@
 <!-- <mvc:view-controller path="/" view-name="main"/>  --><!-- /요청 main.jsp => controller에 생성 -->
 <mvc:view-controller path="/" view-name="main"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
+<mvc:view-controller view-name="login" path="/loginForm"/>
 
 <mvc:resources location="/WEB-INF/views/images/" mapping="/images/**"></mvc:resources>
 <mvc:resources location="/WEB-INF/views/css/" mapping="/css/**"></mvc:resources>
