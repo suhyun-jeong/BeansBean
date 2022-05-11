@@ -57,7 +57,7 @@ public class MemberController {
 		if (session.getAttribute("login") != null)
 			session.removeAttribute("login");
 		
-		return "main";
+		return "redirect:./";
 	}
 	
 //	@RequestMapping(value = "/loginCheck/myPage")

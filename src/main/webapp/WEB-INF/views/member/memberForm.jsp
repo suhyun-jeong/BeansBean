@@ -2,6 +2,30 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
+<script type="text/javascript">
+	$(function() {
+		// 도메인 자동 입력
+		$("#emailSelect").change(function() {
+			$("#email2").val(this.value);
+		});
+
+		// 빈칸 검사
+		$("form").submit(function(event) {
+			var inputCheck = true;
+			
+			$("input").each(function() {
+				if (this.value.length < 1) {
+					inputCheck = false;
+					return false;
+				}
+			});
+			if (!inputCheck)
+				alert("모든 칸을 채워주세요.");
+			
+			return inputCheck;
+		});
+	});
+</script>
 <!-- <script type="text/javascript">
 	$(function() {
 		
@@ -25,29 +49,31 @@
 
 </script> -->
 <form action="memberAdd" method="get">
-*아이디:<input type="text" name="userid" id="userid">
+*아이디: <input type="text" name="userid" id="userid">
 <span id="result"></span>
 <br> 
-*비밀번호:<input type="text" name="passwd" id="passwd"><br> 
+*비밀번호: <input type="text" name="passwd" id="passwd"><br> 
 <!-- 비빌번호확인:<input type="text" name="passwd2" id="passwd2">
 <span id="result2"></span> 
 <br> -->
-이름:<input type="text" name="username"><br> 
-유져코드 :<input type="text" name="usercode"><br>
-<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
+이름: <input type="text" name="username" size="6"><br> 
+유저코드: 
+<input type="radio" class="usercode" name="usercode" value="20" checked="checked">일반 회원
+<input type="radio" class="usercode" name="usercode" value="30">사업자 회원<br>
+<input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <br>
-전화번호:<select name="phone1">
+전화번호: <select name="phone1">
   <option value="010">010</option>
   <option value="011">011</option>
 </select>-
-<input type="text" name="phone2" >-<input type="text" name="phone3" >
+<input type="text" name="phone2" size="4" maxlength="4">-<input type="text" name="phone3" size="4" maxlength="4">
 <br>
-이메일:<input type="text" name="email1" id="email1">@
-       <input type="text" name="email2" id="email2" placeholder="직접입력">
+이메일: <input type="text" name="email1" id="email1">@
+       <input type="text" name="email2" id="email2" placeholder="직접 입력">
        <select  id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>

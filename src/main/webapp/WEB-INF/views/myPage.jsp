@@ -7,7 +7,7 @@
 <title>My Page</title>
 </head>
 <body>
-	<h1>회원 정보</h1>
+	<h1>회원 정보 화면입니다.</h1>
 	
 	<jsp:include page="common/top.jsp" flush="true" />	<!-- 상단 메뉴 바 -->
 
