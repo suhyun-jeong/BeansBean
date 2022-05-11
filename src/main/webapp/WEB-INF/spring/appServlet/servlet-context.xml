@@ -16,6 +16,7 @@
 <mvc:view-controller path="/" view-name="main"/>
 <mvc:view-controller path="goodsinsert" view-name="insertGoods"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
+<mvc:view-controller view-name="login" path="/loginForm"/>
 
 <mvc:view-controller view-name="login" path="/loginForm"/>
 

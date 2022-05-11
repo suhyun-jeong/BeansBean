@@ -56,10 +56,15 @@
 <!-- 비빌번호확인:<input type="text" name="passwd2" id="passwd2">
 <span id="result2"></span> 
 <br> -->
+<<<<<<< HEAD
 이름: <input type="text" name="username" size="6"><br> 
 유저코드: 
 <input type="radio" class="usercode" name="usercode" value="20" checked="checked">일반 회원
 <input type="radio" class="usercode" name="usercode" value="30">사업자 회원<br>
+=======
+이름:<input type="text" name="username" size="6"><br> 
+유저코드 :<input type="text" name="usercode" size="2" maxlength="2"><br>
+>>>>>>> 4f5560747c0e75a3cb73d80eb5ba0af1287132f2
 <input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
