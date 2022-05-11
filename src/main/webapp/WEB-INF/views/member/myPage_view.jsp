@@ -9,8 +9,9 @@
 
 <style type="text/css">
 	th {
-		text-align:right;
 		padding-right:20px;
+		text-align:right;
+		cursor:default;
 	}
 </style>
 
@@ -53,7 +54,7 @@
 	<table>
 		<tr>
 			<th>아이디</th>
-			<td>
+			<td style="cursor:default;">
 				${userInfo.userid}
 				<input type="hidden" name="userid" value="${userInfo.userid}">
 				<span style="margin-left:20px;">

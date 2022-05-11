@@ -4,6 +4,43 @@
 </script>
 <script type="text/javascript">
 	$(function() {
+		// 아이디 중복 검사
+		$("#idDuplicateCheck").click(function(event) {
+			event.preventDefault();
+			
+			$("#idCheckResult").text("");
+			
+			if ($("#userid").val().length > 0) {
+				$.ajax({
+					type:"get", 
+					url:"idDuplicateCheck", 
+					dataType:"text", 
+					data:{
+						inputId:$("#userid").val()
+					}, 
+					success:function(data, status, xhr) {
+						if (data == "OK") {
+							$("#idCheckResult").css("color", "green");
+							$("#idCheckResult").text("사용 가능한 아이디입니다.");
+						} else {
+							$("#idCheckResult").css("color", "red");
+							$("#idCheckResult").text("중복된 아이디입니다.");
+						}
+					}, 
+					error:function(xhr, status, error) {
+						console.log(error);
+					}
+				});
+			} else
+				$("#userid").focus();
+		});
+		$("#userid").keyup(function() {	// 새로 입력하면 중복 체크 결과 초기화
+			$("#idCheckResult").text("");
+		});
+		$("#userid").bind("paste", function() {	// 붙여넣기하면 중복 체크 결과 초기화
+			$("#idCheckResult").text("");
+		});
+		
 		// 도메인 자동 입력
 		$("#emailSelect").change(function() {
 			$("#email2").val(this.value);
@@ -19,8 +56,19 @@
 					return false;
 				}
 			});
-			if (!inputCheck)
+			
+			if (!inputCheck) {
 				alert("모든 칸을 채워주세요.");
+			} else if ($("#idCheckResult").text().length < 1) {
+				alert("아이디 중복확인을 해주세요.");
+				$("#userid").focus();
+				
+				inputCheck = false;
+			} else if ($("#idCheckResult").text() == "중복된 아이디입니다.") {
+				alert("\"" + $("#userid").val() + "\"은/는 사용 불가능한 아이디입니다.\n다른 아이디를 입력해주세요.");
+				
+				inputCheck = false;
+			}
 			
 			return inputCheck;
 		});
@@ -49,22 +97,17 @@
 
 </script> -->
 <form action="memberAdd" method="get">
-*아이디: <input type="text" name="userid" id="userid">
-<span id="result"></span>
+*아이디: <input type="text" name="userid" id="userid"> <button id="idDuplicateCheck">중복확인</button>
+<span id="idCheckResult" style="margin-left:10px; font-size:12px; cursor:default;"></span>
 <br> 
 *비밀번호: <input type="text" name="passwd" id="passwd"><br> 
 <!-- 비빌번호확인:<input type="text" name="passwd2" id="passwd2">
 <span id="result2"></span> 
 <br> -->
-<<<<<<< HEAD
 이름: <input type="text" name="username" size="6"><br> 
 유저코드: 
 <input type="radio" class="usercode" name="usercode" value="20" checked="checked">일반 회원
 <input type="radio" class="usercode" name="usercode" value="30">사업자 회원<br>
-=======
-이름:<input type="text" name="username" size="6"><br> 
-유저코드 :<input type="text" name="usercode" size="2" maxlength="2"><br>
->>>>>>> 4f5560747c0e75a3cb73d80eb5ba0af1287132f2
 <input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">

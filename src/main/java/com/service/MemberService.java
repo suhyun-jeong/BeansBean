@@ -32,4 +32,9 @@ public class MemberService {
 		return dao.userInfoUpdate(mDTO);
 	}
 
+	// 아이디 중복 체크
+	public int idDuplicateCheck(String inputId) {
+		return dao.idDuplicateCheck(inputId);
+	}
+
 }
