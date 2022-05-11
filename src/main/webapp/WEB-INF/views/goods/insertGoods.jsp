@@ -14,13 +14,13 @@
 		 $("#vADD").click(function() {//제품종류 input 추가
 			event.preventDefault();
 			Variationindex++;
-			$("#Variation").append("제품 종류("+Variationindex+"):<input type='text' name='vcategory' class='VCA'><br>");
+			$("#Variation").append("<div>제품 종류("+Variationindex+"):<input type='text' name='vcategory' class='VCA'><br></div>");
 			}); //vADD end
 			
 		 $("#bADD").click(function() {//번들 input 추가
 			event.preventDefault();
 			Bundleindex++;
-			$("#Bundle").append("번들("+Bundleindex+"): <input type='text' name='bcategory' id='bcategory"+Bundleindex+"'><br> 번들가격("+Bundleindex+"): <input type='text' name='bprice'id='bprice"+Bundleindex+"'><br>");
+			$("#Bundle").append("<div>번들("+Bundleindex+"): <input type='text' name='bcategory' id='bcategory"+Bundleindex+"'><br> 번들가격("+Bundleindex+"): <input type='text' name='bprice'id='bprice"+Bundleindex+"'><br></div>");
 			}); //bADD end
 		
 	
@@ -39,17 +39,52 @@
 			});//end ajax
 		});//end keyup
 		
+		$("#vDEL").click(function() {
+			event.preventDefault();
+			if (Variationindex > 1) {
+				$("#Variation").children().last().remove();
+				Variationindex--;
+			}
+		});
+		$("#bDEL").click(function() {
+			event.preventDefault();
+			if (Bundleindex > 1) {
+				$("#Bundle").children().last().remove();
+				Bundleindex--;
+			}
+		});
+		
 		$("#submitBtn").click(submit); //submitBtn end
 		
 		
 	});//end ready 
 	
 		 function submit() {//동기로 구현
-			goodsInsert();
-			imageUpload();	
-			insertVariation();
-			insertBundle();
-			location.href = "goodsinsert"; //후에 변경완료페이지로 이동
+			
+			if ($("#gcode").val().length == 0) {
+				alert("제품코드를 입력해주세요.");
+				$("#gcode").focus();
+				event.preventDefault();
+			}else if ($("#gname").val().length == 0) {
+				alert("제품이름을 입력해주세요.");
+				$("#gname").focus();
+				event.preventDefault();
+			}else if ($("#gprice").val().length == 0) {
+				alert("제품가격을 입력해주세요.");
+				$("#gprice").focus();
+				event.preventDefault();
+			}else if ($("#gamount").val().length == 0) {
+				alert("재고수량을 입력해주세요.");
+				$("#gamount").focus();
+				event.preventDefault();
+			}else {
+				goodsInsert();
+				imageUpload();	
+				insertVariation();
+				insertBundle();
+				location.href = "afterInsert"; //후에 변경완료페이지로 이동
+			}
+			
 		}
 		
 	
@@ -149,17 +184,22 @@
 제품코드:<input type="text" name="gcode" id="gcode">
 <span id="result"></span>
 <br> 
-제품카테고리:<input type="text" name="gcategory" id="gcategory"><br> 
-제품 이름:<input type="text" name="gname"><br> 
-제품단일 가격 :<input type="text" name="gprice"><br>
-제품 재고:<input type="text" name="gamount"><br>
+제품카테고리:
+	<label><input type="radio" name="gcategory" value="beverage" checked> beverage</label>
+	<label><input type="radio" name="gcategory" value="coffee"> coffee</label>
+    <label><input type="radio" name="gcategory" value="liquid"> liquid</label><br> 
+제품 이름:<input type="text" name="gname" id="gname"><br> 
+제품단일 가격 :<input type="text" name="gprice" id="gprice"><br>
+제품 재고:<input type="text" name="gamount" id="gamount"><br>
 <div id="Variation">
 제품 종류(1):<input type="text" name="vcategory" class="VCA"><button id="vADD">추가하기</button><br>
 </div>
+<button id="vDEL">종류삭제</button><br>
 <div id="Bundle">
 번들(1): <input type="text" name="bcategory" id="bcategory1"><button id="bADD">추가하기</button><br>
 번들가격(1): <input type="text" name="bprice" id="bprice1"><br>
 </div>
+<button id="bDEL">번들삭제</button><br>
 <input type="reset" value="취소"><br>
 </form>
 <hr>
