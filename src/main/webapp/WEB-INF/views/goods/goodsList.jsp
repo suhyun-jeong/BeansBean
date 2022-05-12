@@ -24,10 +24,25 @@
 						<td>
 							<table style='padding: 15px'>
 								<tr>
-									<td><a href="goodsDetail?gcode=${dto.gcode}"> <img
-											src="images/${dto.gimage}.png" border="0"
-											align="center" width="200"><!--  수정-->
-									</a></td>
+								<c:forTokens var="token" items="${dto.gimage}" delims="." varStatus="status2">
+									<c:if test="${status2.last}">
+										<%-- ${token}, ${dto.gimage} --%>
+										<c:choose>
+											<c:when test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp'}">
+												<td><a href="goodsDetail?gcode=${dto.gcode}"> <img
+														src="images/${dto.gimage}" border="0"
+														align="center" width="200"><!--  수정-->
+												</a></td>
+											</c:when>
+											<c:otherwise>
+												<td><a href="goodsDetail?gcode=${dto.gcode}"> <img
+														src="images/${dto.gimage}.jpg" border="0"
+														align="center" width="200"><!--  수정-->
+												</a></td>
+											</c:otherwise>  
+										</c:choose>
+									</c:if>
+								</c:forTokens>
 								</tr>
 								<tr>
 

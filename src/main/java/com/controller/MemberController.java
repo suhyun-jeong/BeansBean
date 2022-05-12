@@ -43,7 +43,7 @@ public class MemberController {
 		if (mDTO != null) {
 			session.setAttribute("login", mDTO);
 			
-			return "main";
+			return "redirect:/goodsList?gcategory=coffee";
 		} else {
 			session.setAttribute("loginMsg", "아이디와 비밀번호를 확인해주세요.");
 			
@@ -57,7 +57,7 @@ public class MemberController {
 		if (session.getAttribute("login") != null)
 			session.removeAttribute("login");
 		
-		return "main";
+		return "redirect:/goodsList?gcategory=coffee";
 	}
 	
 //	@RequestMapping(value = "/loginCheck/myPage")
