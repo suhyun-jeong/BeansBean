@@ -55,11 +55,11 @@ public class MemberController {
 		if (mDTO != null) {
 			session.setAttribute("login", mDTO);
 			
-<<<<<<< HEAD
+
 			return "redirect:./";
-=======
-			return "redirect:/goodsList?gcategory=coffee";
->>>>>>> e7095e3320a54370ea01dbc153aee63e8ba29e3f
+
+			//return "redirect:/goodsList?gcategory=coffee";
+
 		} else {
 			session.setAttribute("loginMsg", "아이디와 비밀번호를 확인해주세요.");
 			
@@ -73,11 +73,11 @@ public class MemberController {
 		if (session.getAttribute("login") != null)
 			session.removeAttribute("login");
 		
-<<<<<<< HEAD
+
 		return "redirect:./";
-=======
-		return "redirect:/goodsList?gcategory=coffee";
->>>>>>> e7095e3320a54370ea01dbc153aee63e8ba29e3f
+
+		//return "redirect:/goodsList?gcategory=coffee";
+
 	}
 	
 //	@RequestMapping(value = "/loginCheck/myPage")

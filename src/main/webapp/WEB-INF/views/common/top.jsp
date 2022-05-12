@@ -11,7 +11,7 @@
 	
 	<a href="logout">로그아웃</a>
 	<a href="mypage">마이페이지</a>
-	<a href="">장바구니</a>
+	<a href="cartList">장바구니</a>
 	
 	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
 		<a href="">판매 관리</a>

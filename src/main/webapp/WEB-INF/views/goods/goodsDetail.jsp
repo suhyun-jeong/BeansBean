@@ -10,21 +10,23 @@
 </style>
 <script>
 
-	/* $(function() {
+	 $(function() {
 		$("#cart").on("click", function() {
 			$("form").attr("action", "loginCheck/cartAdd")
 		})
-	}) */
+	}) 
 
-</script>
-<%-- <c:if test="${!empty mesg }">
-<script>
-	alert("${mesg}상품을 장바구니에 담았습니다.");
-</script>
-<% if(session.getAttribute("mesg")!= null){
+	</script>
+ 	<c:if test="${!empty mesg }">
+		<script>
+		alert("${mesg}상품을 장바구니에 담았습니다.");
+	</script>
+	
+	<% if(session.getAttribute("mesg")!= null){
 	session.removeAttribute("mesg");
-} %>
-</c:if> --%>
+		} %>
+	</c:if> 
+
 ${goodsDetail}
 <FORM name="goodDetailForm" method="GET" action="#"><!--action을 막음 --><!-- hidden data -->
 	    <input type="hidden" name="gimage" value="${goodsDetail.gimage}"> 
@@ -72,21 +74,21 @@ ${goodsDetail.gname}
 									산간지역 별도 배송비 추가)</span></li>
 							<li class="td_title" rowspan="2">상품옵션</li>
 							<li style='padding-left: 30px'>
-							<select	class="select_change" name="gSize" id="gSize">
-									<option selected value="사이즈선택">사이즈선택</option>
-									<option value="L">L</option>
-									<option value="M">M</option>
+							<select	class="select_change" name="vcategory" id="vcategory">
+									<option selected value="소매옵션">소매옵션</option>
+									 <option value="L">단품</option> 
+									 <option value="M">M</option>
 									<option value="S">S</option>
 							</select></li>
 							<li style='padding-left: 30px'>
-							<select	class="select_change" size="3" name="gColor" id="gColor">
-								<option selected value="색상선택">색상선택</option>
-								<option value="navy">navy</option>
-								<option value="black">black</option>
-								<option value="ivory">ivory</option>
-								<option value="white">white</option>
-								<option value="gray">gray</option>
+							<select	class="select_change" name="bcategory" id="bcategory">
+								<option selected value="도매옵션">도매옵션</option>
+								<option value="navy">10bundle(5%할인)</option>
+								<option value="black">20bundle(5%할인)</option>
+								<option value="ivory">30bundle(5%할인)</option>
+								
 							</select></li>
+							
 							<li class="td_title">주문수량</li>
 							<li style="padding-left: 30px"><input type="text"
 								name="gAmount" value="1" id="gAmount"

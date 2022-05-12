@@ -11,9 +11,23 @@
 </select>
 
 <select id="goodsDetail" resultType="GoodsDTO" parameterType="string">
-	select gCode,gcategory,gName,gPrice,gAmount,gImage
-	from goods
+	select gCode,gcategory, gName, gPrice, gAmount, gImage
+	from goods 
 	where gcode = #{gcode}
 </select>
+
+<insert id="cartAdd" parameterType="CartDTO">
+		insert into cart (num, userid,gCode,gName,gPrice,
+		        bCategory,vCategory,gAmount,gImage)
+		values(cart_seq.nextval, #{num},#{userid},#{gCode},#{gName},#{gPrice},
+		        #{bCategory},#{vCategory}, #{gAmount}, #{gImage} )
+	</insert>
+	
+<select id="cartList" parameterType="string" 
+	resultType="CartDTO">
+	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+	 from cart
+	 where userid=#{userid}
+	</select>
 
 </mapper>
