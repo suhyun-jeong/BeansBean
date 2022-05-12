@@ -13,7 +13,6 @@
 <mvc:default-servlet-handler/>
 
 <!-- <mvc:view-controller path="/" view-name="main"/>  --><!-- /요청 main.jsp => controller에 생성 -->
-<mvc:view-controller path="/" view-name="main"/>
 <mvc:view-controller path="/goodsinsert" view-name="insertGoods"/>
 <mvc:view-controller path="/afterInsert" view-name="afterInsert"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>

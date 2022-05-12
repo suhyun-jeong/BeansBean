@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.service.GoodsService;
 
@@ -18,12 +19,14 @@ public class GoodsController {
 	@Autowired
 	GoodsService service;
 	
+	
+	
 	@RequestMapping("/goodsList")
 	public ModelAndView goodsList(String gcategory) {
 		// TODO 상품목록보기
 //		System.out.println(gcategory);
 		if(gcategory == null) {
-			gcategory = "liquid";
+			gcategory = "coffee";
 		}
 
 		List<GoodsDTO> list = service.goodsList(gcategory);
@@ -38,10 +41,17 @@ public class GoodsController {
 	@RequestMapping("/goodsDetail")
 	@ModelAttribute("goodsDetail")
 	public GoodsDTO goodsDetail(String gcode) {
-		System.out.println(gcode);
+//		System.out.println(gcode);
 		GoodsDTO dto = service.goodsDetail(gcode);
-		System.out.println(dto);
+//		System.out.println(dto);
 		return dto;
 	}
+	
+//	//@RequestMapping("/goodsDetail")
+//	public BundleDTO goodsBundle(String gcode){
+//		BundleDTO dto = new BundleDTO();
+//		System.out.println(gcode);
+//		return dto;
+//	}
 	
 }
