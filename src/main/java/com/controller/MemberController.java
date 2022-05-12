@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dto.MemberDTO;
 import com.service.MemberService;
@@ -34,6 +35,17 @@ public class MemberController {
 		return "main";
 	}
 	
+	// 아이디 중복 체크
+	@RequestMapping(value="/idDuplicateCheck")
+	@ResponseBody
+	public String idDuplicateCheck(@RequestParam("inputId") String inputId) {
+		int duplicated = service.idDuplicateCheck(inputId);
+		if (duplicated == 0)
+			return "OK";
+		else
+			return "NO";
+	}
+	
 	// 로그인
 	@RequestMapping(value="/login")
 	public String login(HttpSession session, @RequestParam Map<String, String> map) {
@@ -43,7 +55,7 @@ public class MemberController {
 		if (mDTO != null) {
 			session.setAttribute("login", mDTO);
 			
-			return "main";
+			return "redirect:./";
 		} else {
 			session.setAttribute("loginMsg", "아이디와 비밀번호를 확인해주세요.");
 			
@@ -57,7 +69,7 @@ public class MemberController {
 		if (session.getAttribute("login") != null)
 			session.removeAttribute("login");
 		
-		return "main";
+		return "redirect:./";
 	}
 	
 //	@RequestMapping(value = "/loginCheck/myPage")

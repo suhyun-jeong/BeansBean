@@ -7,7 +7,7 @@
 
 <!-- 로그인되어있을 때 -->
 <c:if test="${not empty login}">
-	<p><b>${login.username}</b> 님</p>
+	<p style="cursor:default;">&nbsp;<b>${login.username}</b><span style="font-size:12px;">(${login.userid})</span> 님</p>
 	
 	<a href="logout">로그아웃</a>
 	<a href="mypage">마이페이지</a>

@@ -9,15 +9,21 @@
 
 <style type="text/css">
 	th {
-		text-align:right;
 		padding-right:20px;
+		text-align:right;
+		cursor:default;
 	}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		// 빈칸 검사		
+	$(function() {
+		// 도메인 자동 입력
+		$("#emailSelect").change(function() {
+			$("#email2").val(this.value);
+		});
+		
+		// 빈칸 검사
 		$("form").submit(function(event) {
 			var inputCheck = true;
 			
@@ -48,7 +54,7 @@
 	<table>
 		<tr>
 			<th>아이디</th>
-			<td>
+			<td style="cursor:default;">
 				${userInfo.userid}
 				<input type="hidden" name="userid" value="${userInfo.userid}">
 				<span style="margin-left:20px;">
