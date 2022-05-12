@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.util.Iterator;
@@ -22,6 +23,13 @@ import com.service.ManagerService;
 public class ManagerController {
 	@Autowired
 	ManagerService service;
+	
+	@RequestMapping(value = "/CtrlGoods")
+	public ModelAndView controlGoods() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("controlGoods");
+		return model;
+	}
 	
 	@ResponseBody	//제품등록
 	@RequestMapping(value = "insertGoods", method = RequestMethod.POST)
