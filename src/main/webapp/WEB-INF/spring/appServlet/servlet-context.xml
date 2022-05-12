@@ -17,9 +17,7 @@
 <mvc:view-controller path="/goodsinsert" view-name="insertGoods"/>
 <mvc:view-controller path="/afterInsert" view-name="afterInsert"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
-<mvc:view-controller view-name="login" path="/loginForm"/>
 
-<mvc:view-controller view-name="login" path="/loginForm"/>
 
 <mvc:view-controller path="/loginForm" view-name="login" />	<!-- /login 요청 시 login.jsp로 이동 -->
 

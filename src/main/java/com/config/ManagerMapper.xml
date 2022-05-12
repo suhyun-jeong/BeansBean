@@ -21,4 +21,15 @@
 	select * from goods where gcode = #{gcode}
 </select>
 
+<select id="AllGoods" resultType="GoodsDTO">
+	select * from goods 
+</select>
+
+<select id="selectVariation" resultType="VariationDTO">
+	select * from variation
+</select>
+
+<select id="selectBundle" resultType="BundleDTO">
+	select * from bundle
+</select>
 </mapper>

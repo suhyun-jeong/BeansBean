@@ -12,10 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 
 import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
+import com.service.GoodsService;
 import com.service.ManagerService;
 
 
@@ -24,9 +26,17 @@ public class ManagerController {
 	@Autowired
 	ManagerService service;
 	
+	
 	@RequestMapping(value = "/CtrlGoods")
 	public ModelAndView controlGoods() {
+		List<GoodsDTO> list;
+		list = service.AllGoods();
+		List<VariationDTO> vlist = service.selectVariation();
+		List<BundleDTO> blist = service.selectBundle();
 		ModelAndView model = new ModelAndView();
+		model.addObject("AllGoods",list);
+		model.addObject("vlist",vlist);
+		model.addObject("blist",blist);
 		model.setViewName("controlGoods");
 		return model;
 	}

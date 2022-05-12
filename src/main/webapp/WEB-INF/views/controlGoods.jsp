@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>상품관리 화면입니다.</h1>
-<jsp:include page="common/manu.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
+<jsp:include page="common/manu.jsp" flush="true"></jsp:include><br>
 <hr>
 <jsp:include page="goods/controlGoods.jsp" flush="true"></jsp:include><br>
 </body>
