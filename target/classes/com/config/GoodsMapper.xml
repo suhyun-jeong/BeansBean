@@ -16,6 +16,18 @@
 	where gcode = #{gcode}
 </select>
 
+<select id="bundleDetail" resultType="BundleDTO" parameterType="string">
+	select *
+	from bundle
+	where gcode = #{gcode}
+</select>
+
+<select id="variationDetail" resultType="VariationDTO" parameterType="string">
+	select *
+	from variation
+	where gcode = #{gcode}
+</select>
+
 <insert id="cartAdd" parameterType="CartDTO">
 		insert into cart (num, userid,gCode,gName,gPrice,
 		        bCategory,vCategory,gAmount,gImage)

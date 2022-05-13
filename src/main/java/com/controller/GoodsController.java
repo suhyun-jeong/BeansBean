@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dto.BundleDTO;
 import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
+import com.dto.VariationDTO;
 import com.service.GoodsService;
 
 @Controller
@@ -21,8 +25,6 @@ public class GoodsController {
 	
 	@Autowired
 	GoodsService service;
-	
-	
 	
 	@RequestMapping("/goodsList")
 	public ModelAndView goodsList(String gcategory) {
@@ -49,6 +51,31 @@ public class GoodsController {
 //		System.out.println(dto);
 		return dto;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "bundleDetail")
+	public List<BundleDTO> bundleDetail(String gcode) {
+		//TODO BundleDTO 
+		System.out.println(gcode);
+		
+		List<BundleDTO> list = service.bundleDetail(gcode);
+		System.out.println(list);
+
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "variationDetail")
+	public List<VariationDTO> variationDetail( String gcode) {
+		//TODO BundleDTO 
+		System.out.println(gcode);
+		
+		List<VariationDTO> list = service.variationDetail(gcode);
+		System.out.println(list);
+
+		return list;
+	}
+	
 	
 	@RequestMapping("/loginCheck/cartAdd")
 	public String cartAdd(CartDTO cart, HttpSession session) {
