@@ -14,21 +14,15 @@
 		 $("#vADD").click(function() {//제품종류 input 추가
 			event.preventDefault();
 			Variationindex++;
-<<<<<<< HEAD
 			$("#Variation").append("<div>제품 종류("+Variationindex+"):<input type='text' name='vcategory' class='VCA'><br></div>");
-=======
 			$("#Variation").append("제품 종류("+Variationindex+"):<input type='text' name='vcategory' class='VCA'><br>");
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 			}); //vADD end
 			
 		 $("#bADD").click(function() {//번들 input 추가
 			event.preventDefault();
 			Bundleindex++;
-<<<<<<< HEAD
 			$("#Bundle").append("<div>번들("+Bundleindex+"): <input type='text' name='bcategory' id='bcategory"+Bundleindex+"'><br> 번들가격("+Bundleindex+"): <input type='text' name='bprice'id='bprice"+Bundleindex+"'><br></div>");
-=======
 			$("#Bundle").append("번들("+Bundleindex+"): <input type='text' name='bcategory' id='bcategory"+Bundleindex+"'><br> 번들가격("+Bundleindex+"): <input type='text' name='bprice'id='bprice"+Bundleindex+"'><br>");
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 			}); //bADD end
 		
 	
@@ -47,7 +41,7 @@
 			});//end ajax
 		});//end keyup
 		
-<<<<<<< HEAD
+
 		$("#vDEL").click(function() {
 			event.preventDefault();
 			if (Variationindex > 1) {
@@ -63,15 +57,12 @@
 			}
 		});
 		
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 		$("#submitBtn").click(submit); //submitBtn end
 		
 		
 	});//end ready 
 	
 		 function submit() {//동기로 구현
-<<<<<<< HEAD
 			
 			if ($("#gcode").val().length == 0) {
 				alert("제품코드를 입력해주세요.");
@@ -101,13 +92,11 @@
 				location.href = "afterInsert"; //후에 변경완료페이지로 이동
 			}
 			
-=======
 			goodsInsert();
 			imageUpload();	
 			insertVariation();
 			insertBundle();
 			location.href = "goodsinsert"; //후에 변경완료페이지로 이동
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 		}
 		
 	
@@ -207,7 +196,7 @@
 제품코드:<input type="text" name="gcode" id="gcode">
 <span id="result"></span>
 <br> 
-<<<<<<< HEAD
+
 제품카테고리:
 	<label><input type="radio" name="gcategory" value="beverage" checked> beverage</label>
 	<label><input type="radio" name="gcategory" value="coffee"> coffee</label>
@@ -219,7 +208,7 @@
 제품 종류(1):<input type="text" name="vcategory" class="VCA"><button id="vADD">추가하기</button><br>
 </div>
 <button id="vDEL">종류삭제</button><br>
-=======
+
 제품카테고리:<input type="text" name="gcategory" id="gcategory"><br> 
 제품 이름:<input type="text" name="gname"><br> 
 제품단일 가격 :<input type="text" name="gprice"><br>
@@ -227,15 +216,15 @@
 <div id="Variation">
 제품 종류(1):<input type="text" name="vcategory" class="VCA"><button id="vADD">추가하기</button><br>
 </div>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 <div id="Bundle">
 번들(1): <input type="text" name="bcategory" id="bcategory1"><button id="bADD">추가하기</button><br>
 번들가격(1): <input type="text" name="bprice" id="bprice1"><br>
 </div>
-<<<<<<< HEAD
+
 <button id="bDEL">번들삭제</button><br>
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
+
 <input type="reset" value="취소"><br>
 </form>
 <hr>

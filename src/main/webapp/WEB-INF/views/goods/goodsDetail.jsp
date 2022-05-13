@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<<<<<<< HEAD
+
 <style>
 	li {list-style: none;
 		padding: 5px;}
@@ -65,7 +65,7 @@
 	
 </script>
 
-=======
+
 <script>
 
 	/* $(function() {
@@ -83,7 +83,7 @@
 	session.removeAttribute("mesg");
 } %>
 </c:if> --%>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 ${goodsDetail}
 <FORM name="goodDetailForm" method="GET" action="#"><!--action을 막음 --><!-- hidden data -->
 	    <input type="hidden" name="gimage" value="${goodsDetail.gimage}"> 
@@ -91,7 +91,6 @@ ${goodsDetail}
 	     <input	type="hidden" name="gname" value="${goodsDetail.gname}"> 
 	     <input	type="hidden" name="gprice" value="${goodsDetail.gprice}">
 
-<<<<<<< HEAD
 <% 
 	MemberDTO login = (MemberDTO)session.getAttribute("login");
 	if(login != null){
@@ -201,7 +200,7 @@ ${goodsDetail.gname}
 		&nbsp;&nbsp;
 		<button id="cart">장바구니</button>
 	</div>
-=======
+
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td height="30">
@@ -291,5 +290,5 @@ ${goodsDetail.gname}
 	<br> <button >구매</button>
 	&nbsp;&nbsp;
 	<button id="cart">장바구니</button>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 </FORM>

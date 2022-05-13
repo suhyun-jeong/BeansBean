@@ -10,11 +10,7 @@ public class GoodsDTO {
 	private int gprice;
 	private int gamount;
 	private String gimage;
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 	public GoodsDTO() {
 		super();
 		// TODO Auto-generated constructor stub

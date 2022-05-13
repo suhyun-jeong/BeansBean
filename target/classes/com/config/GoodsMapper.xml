@@ -11,7 +11,6 @@
 </select>
 
 <select id="goodsDetail" resultType="GoodsDTO" parameterType="string">
-<<<<<<< HEAD
 	select gCode,gcategory, gName, gPrice, gAmount, gImage
 	from goods 
 	where gcode = #{gcode}
@@ -41,13 +40,6 @@
 	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
 	 from cart
 	 where userid=#{userid}
-	</select>
-
-=======
-	select gCode,gcategory,gName,gPrice,gAmount,gImage
-	from goods
-	where gcode = #{gcode}
 </select>
 
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 </mapper>
