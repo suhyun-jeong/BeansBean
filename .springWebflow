@@ -4,8 +4,8 @@
 	<pluginVersion><![CDATA[3.9.11.201912160804-RELEASE]]></pluginVersion>
 	<configs>
 		<config>
-			<file>src/main/java/com/controller/MemberController.xml</file>
-			<name><![CDATA[MemberController]]></name>
+			<file>src/main/java/com/config/BoardMapper2.xml</file>
+			<name><![CDATA[BoardMapper2]]></name>
 		</config>
 	</configs>
 </webflow-project-description>

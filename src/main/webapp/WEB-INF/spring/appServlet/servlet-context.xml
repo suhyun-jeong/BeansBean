@@ -17,6 +17,9 @@
 <mvc:view-controller path="goodsinsert" view-name="insertGoods"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
 <mvc:view-controller path="/loginForm" view-name="login" />	<!-- /login 요청 시 login.jsp로 이동 -->
+<mvc:view-controller path="/Cook_BRD" view-name="Cook_BRD" />	<!-- /login 요청 시 login.jsp로 이동 -->
+<mvc:view-controller path="/Info_BRD" view-name="Info_BRD" />	<!-- /login 요청 시 login.jsp로 이동 -->
+
 <mvc:resources location="/WEB-INF/views/images/" mapping="/images/**"></mvc:resources>
 <mvc:resources location="/WEB-INF/views/css/" mapping="/css/**"></mvc:resources>
 <mvc:resources location="/WEB-INF/views/js/" mapping="/js/**"></mvc:resources>
