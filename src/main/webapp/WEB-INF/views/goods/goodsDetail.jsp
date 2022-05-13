@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,24 +9,55 @@
 		padding: 5px;}
 	span {padding-right: 30px;}
 </style>
+
 <script>
+	//bundle, variation
+	$(document).ready(function() {
 
-	 $(function() {
-		$("#cart").on("click", function() {
-			$("form").attr("action", "loginCheck/cartAdd")
-		})
-	}) 
-
-	</script>
- 	<c:if test="${!empty mesg }">
-		<script>
-		alert("${mesg}상품을 장바구니에 담았습니다.");
-	</script>
+				//bundle 값, option에 push		
+				$.ajax({
+					url: "bundleDetail",
+					type: "get",
+					data: {gcode: $("#findgcode").text()},
+					success: function (data) {
+						console.log("b성공");
+						
+						$(data).each(function (index, value) {
+							//console.log(index);
+							$('#bcategory').append("<option value='" + data[index]['bcategory']+"'>"
+								+ data[index]['bcategory'] + " : " + data[index]['bprice'] + "원" + "</option>");
+							//console.log(data[0]);
+						})
+					},
+					error: function(xhr,status,error) {
+						console.log(error);
+					}
+				});  //end ajax
+				
+				
+				//variation 값, option에 push		
+				$.ajax({
+					url: "variationDetail",
+					type: "get",
+					data: {gcode: $("#findgcode").text()},
+					success: function (data) {
+						console.log("v성공");
+						$(data).each(function (index, value) {
+							console.log(index);
+							//console.log(data[index]['num']);
+							$('#vcategory').append("<option value='" + data[index]['vcategory']+"'>"
+								+ data[index]['vcategory'] + "</option>");
+							//console.log(data[0]);
+						})
+					},
+					error: function(xhr,status,error) {
+						console.log(error);
+					}
+				});  //end ajax
+				
+		})//end ready
 	
-	<% if(session.getAttribute("mesg")!= null){
-	session.removeAttribute("mesg");
-		} %>
-	</c:if> 
+</script>
 
 ${goodsDetail}
 <FORM name="goodDetailForm" method="GET" action="#"><!--action을 막음 --><!-- hidden data -->
@@ -75,17 +107,12 @@ ${goodsDetail.gname}
 							<li class="td_title" rowspan="2">상품옵션</li>
 							<li style='padding-left: 30px'>
 							<select	class="select_change" name="vcategory" id="vcategory">
-									<option selected value="소매옵션">소매옵션</option>
-									 <option value="L">단품</option> 
-									 <option value="M">M</option>
-									<option value="S">S</option>
+									<option selected>variation</option>
+									
 							</select></li>
 							<li style='padding-left: 30px'>
 							<select	class="select_change" name="bcategory" id="bcategory">
-								<option selected value="도매옵션">도매옵션</option>
-								<option value="navy">10bundle(5%할인)</option>
-								<option value="black">20bundle(5%할인)</option>
-								<option value="ivory">30bundle(5%할인)</option>
+								<option selected>bundle</option>
 								
 							</select></li>
 							
