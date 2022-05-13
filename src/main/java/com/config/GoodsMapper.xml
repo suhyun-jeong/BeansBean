@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodsMapper">
+
+<select id="goodsList" resultType="GoodsDTO" parameterType="string">
+	select gCode,gcategory,gName,gPrice,gAmount,gImage
+	from goods
+	where gcategory = #{gcategory}
+</select>
+
+<select id="goodsDetail" resultType="GoodsDTO" parameterType="string">
+	select gCode,gcategory, gName, gPrice, gAmount, gImage
+	from goods 
+	where gcode = #{gcode}
+</select>
+
+<select id="bundleDetail" resultType="BundleDTO" parameterType="string">
+	select *
+	from bundle
+	where gcode = #{gcode}
+</select>
+
+<select id="variationDetail" resultType="VariationDTO" parameterType="string">
+	select *
+	from variation
+	where gcode = #{gcode}
+</select>
+
+<insert id="cartAdd" parameterType="CartDTO">
+		insert into cart (num, userid,gCode,gName,gPrice,
+		        bCategory,vCategory,gAmount,gImage)
+		values(cart_seq.nextval, #{num},#{userid},#{gCode},#{gName},#{gPrice},
+		        #{bCategory},#{vCategory}, #{gAmount}, #{gImage} )
+	</insert>
+	
+<select id="cartList" parameterType="string" 
+	resultType="CartDTO">
+	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+	 from cart
+	 where userid=#{userid}
+	</select>
+
+</mapper>

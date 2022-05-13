@@ -10,6 +10,31 @@
      values( #{userid},#{passwd},#{username},#{usercode},#{post},#{addr1},#{addr2},
               #{phone1},#{phone2},#{phone3},#{email1},#{email2} )
    </insert>
+   
+	<!-- id, pw 체크 -->
+	<select id="idpwCheck" parameterType="Map" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE USERID = #{userid} AND PASSWD = #{passwd}
+	</select>
+	
+	<!-- 회원 정보 가져오기 -->
+	<select id="getUserInfo" parameterType="String" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE USERID = #{userid}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="userInfoUpdate" parameterType="MemberDTO">
+		UPDATE MEMBER 
+		SET USERNAME = #{username}, 
+			POST = #{post}, ADDR1 = #{addr1}, ADDR2 = #{addr2}, 
+			PHONE1 = #{phone1}, PHONE2 = #{phone2}, PHONE3 = #{phone3}, 
+			EMAIL1 = #{email1}, EMAIL2 = #{email2} 
+		WHERE USERID = #{userid}
+	</update>
+	
+	<!-- 아이디 중복 체크 -->
+	<select id="idDuplicateCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE USERID = #{userid}
+	</select>
 
 <!-- <select id="idCheck" parameterType="String" resultType="int">
 select count(*) from member where userid = #{userid}

@@ -24,6 +24,8 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/config/MemberMapper.xml</value> <!--Mapper등록  -->
+				<value>classpath:com/config/ManagerMapper.xml</value> <!--Mapper등록  -->
+				<value>classpath:com/config/GoodsMapper.xml</value>
 			</list>
 		</property>
 		<!-- <property name="mapperLocations" value="classpath:com/dao/*.xml" /> -->

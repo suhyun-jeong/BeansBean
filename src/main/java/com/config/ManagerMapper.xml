@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ManagerMapper">
+
+<insert id="goodsADD" parameterType="GoodsDTO">
+     insert into goods (gcode,gcategory,gname,gprice,gamount,gimage)
+     values( #{gcode},#{gcategory},#{gname},#{gprice},#{gamount},#{gimage})
+   </insert>
+<insert id="variationADD" parameterType="VariationDTO">
+     insert into VARIATION (num,gcode,vcategory)
+     values(VARIATION_SEQ.nextval,#{gcode},#{vcategory})
+   </insert>
+<insert id="bundleADD" parameterType="BundleDTO">
+     insert into BUNDLE (num,gcode,bcategory,bprice)
+     values(bundle_seq.nextval,#{gcode},#{bcategory},#{bprice})
+   </insert>
+
+<select id="goodsinfo" parameterType="String" resultType="GoodsDTO">
+	select * from goods where gcode = #{gcode}
+</select>
+
+<select id="AllGoods" resultType="GoodsDTO">
+	select * from goods 
+</select>
+
+<select id="selectVariation" resultType="VariationDTO">
+	select * from variation
+</select>
+
+<select id="selectBundle" resultType="BundleDTO">
+	select * from bundle
+</select>
+</mapper>
