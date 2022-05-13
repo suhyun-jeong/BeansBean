@@ -53,7 +53,7 @@ public class GoodsController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "bundleDetail")
+	@RequestMapping("bundleDetail")
 	public List<BundleDTO> bundleDetail(String gcode) {
 		//TODO BundleDTO 
 		System.out.println(gcode);
@@ -65,8 +65,8 @@ public class GoodsController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "variationDetail")
-	public List<VariationDTO> variationDetail( String gcode) {
+	@RequestMapping("variationDetail")
+	public List<VariationDTO> variationDetail(String gcode) {
 		//TODO BundleDTO 
 		System.out.println(gcode);
 		
@@ -102,12 +102,5 @@ public class GoodsController {
 		return "redirect:../cartList"; //servlet-context에 등록
 		
 	}
-	
-//	//@RequestMapping("/goodsDetail")
-//	public BundleDTO goodsBundle(String gcode){
-//		BundleDTO dto = new BundleDTO();
-//		System.out.println(gcode);
-//		return dto;
-//	}
 	
 }

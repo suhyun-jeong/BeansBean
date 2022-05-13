@@ -1,3 +1,4 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -11,9 +12,10 @@
 </style>
 
 <script>
+
 	//bundle, variation
 	$(document).ready(function() {
-
+		
 				//bundle 값, option에 push		
 				$.ajax({
 					url: "bundleDetail",
@@ -26,7 +28,7 @@
 							//console.log(index);
 							$('#bcategory').append("<option value='" + data[index]['bcategory']+"'>"
 								+ data[index]['bcategory'] + " : " + data[index]['bprice'] + "원" + "</option>");
-							//console.log(data[0]);
+							console.log(data[0]);
 						})
 					},
 					error: function(xhr,status,error) {
@@ -43,7 +45,7 @@
 					success: function (data) {
 						console.log("v성공");
 						$(data).each(function (index, value) {
-							console.log(index);
+							//console.log(index);
 							//console.log(data[index]['num']);
 							$('#vcategory').append("<option value='" + data[index]['vcategory']+"'>"
 								+ data[index]['vcategory'] + "</option>");
@@ -65,6 +67,13 @@ ${goodsDetail}
 	    <input type="hidden" name="gcode" value="${goodsDetail.gcode}">
 	     <input	type="hidden" name="gname" value="${goodsDetail.gname}"> 
 	     <input	type="hidden" name="gprice" value="${goodsDetail.gprice}">
+
+<% 
+	MemberDTO login = (MemberDTO)session.getAttribute("login");
+	if(login != null){
+		System.out.println("로그인중");
+	}
+%>
 
 ${goodsDetail.gname}
 	<div>
@@ -91,7 +100,7 @@ ${goodsDetail.gname}
 					</div>
 						<div style='width:50%; float:left;'>
 						<ul>
-							<li class="td_title"><span>상품코드</span><span>${goodsDetail.gcode }</span></li>
+							<li class="td_title"><span>상품코드</span><span id=findgcode>${goodsDetail.gcode }</span></li>
 						<%-- 	<li class="td_default" style='padding-left: 30px'>
 								${goodsDetail.gcode }
 							</li> --%>
@@ -105,23 +114,59 @@ ${goodsDetail.gname}
 							<li class="td_title"><span>배송비</span><span style="padding-right:0px; color: #2e56a9; font-weight: bolder">무료배송</span><span style="font-size: 0.8em;"> (도서
 									산간지역 별도 배송비 추가)</span></li>
 							<li class="td_title" rowspan="2">상품옵션</li>
-							<li style='padding-left: 30px'>
-							<select	class="select_change" name="vcategory" id="vcategory">
-									<option selected>variation</option>
-									
-							</select></li>
-							<li style='padding-left: 30px'>
-							<select	class="select_change" name="bcategory" id="bcategory">
-								<option selected>bundle</option>
-								
-							</select></li>
 							
+							<!-- 회원일 때 10(관리자)/20(일반)/30(사업자) -->
+							<c:if test="${not empty login}">
+							<c:choose>
+								<c:when test="${login.usercode eq '10'}">
+									<!-- vcategory -->
+									<li style='padding-left: 30px'>
+									<select	class="select_change" name="vcategory" id="vcategory" style="width: 300px">
+											<option selected>variation</option>
+											
+									</select></li>
+							
+									<!-- bcategory -->
+									<li style='padding-left: 30px'>
+									<select	class="select_change" name="bcategory" id="bcategory" style="width: 300px">
+										<option selected>bundle</option>
+										
+									</select></li>
+								</c:when>
+								<c:when test="${login.usercode eq '20'}">
+									<!-- vcategory -->
+									<li style='padding-left: 30px'>
+									<select	class="select_change" name="vcategory" id="vcategory" style="width: 300px">
+											<option selected>variation</option>
+											
+									</select></li>
+								</c:when>
+								<c:otherwise>
+									<!-- bcategory -->
+									<li style='padding-left: 30px'>
+									<select	class="select_change" name="bcategory" id="bcategory" style="width: 300px">
+										<option selected>bundle</option>
+										
+									</select></li>
+								</c:otherwise>
+							</c:choose>
+							</c:if>
+							
+							<!-- 비로그인 회원처리  -->
+							<c:if test="${empty login}">
+								<!-- vcategory -->
+								<li style='padding-left: 30px'>
+								<select	class="select_change" name="vcategory" id="vcategory" style="width: 300px">
+										<option selected>variation</option>
+											
+								</select></li>
+							</c:if>
 							<li class="td_title">주문수량</li>
-							<li style="padding-left: 30px"><input type="text"
+							<span><input type="text"
 								name="gAmount" value="1" id="gAmount"
-								style="text-align: right; height: 18px"> <img
-								src="images/up.png" id="up"> <img src="images/down.png"
-								id="down"></li>
+								style="text-align: right; height: 18px;"> <img
+								src="images/up.png" id="up" > <img src="images/down.png"
+								id="down" ></span>
 						</ul>
 					</div>
 				

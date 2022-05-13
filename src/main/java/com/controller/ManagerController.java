@@ -13,13 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
-=======
+
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-
->>>>>>> 5a7feaf3233e72eae37aa578666092c6fea607f8
 import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
