@@ -37,7 +37,7 @@
 		$("#userid").keyup(function() {	// 새로 입력하면 중복 체크 결과 초기화
 			$("#idCheckResult").text("");
 		});
-		$("#userid").bind("paste", function() {	// 붙여넣기하면 중복 체크 결과 초기화
+		$("#userid").bind("paste", function(event) {	// 붙여넣기하면 중복 체크 결과 초기화
 			$("#idCheckResult").text("");
 		});
 		
