@@ -46,9 +46,10 @@
 			$("#email2").val(this.value);
 		});
 
-		// 빈칸 검사
+		
 		$("form").submit(function(event) {
 			var inputCheck = true;
+			
 			
 			$("input").each(function() {
 				if (this.value.length < 1) {
@@ -56,6 +57,7 @@
 					return false;
 				}
 			});
+			
 			
 			if (!inputCheck) {
 				alert("모든 칸을 채워주세요.");
@@ -71,6 +73,17 @@
 			}
 			
 			return inputCheck;
+		});
+		
+		
+	});
+	
+	
+	// 취소 시 바로 종료
+	$(function() {
+		$('#cancel').click(function () {
+			
+			location.href = "./";
 		});
 	});
 </script>
@@ -123,13 +136,16 @@
 이메일: <input type="text" name="email1" id="email1">@
        <input type="text" name="email2" id="email2" placeholder="직접 입력">
        <select  id="emailSelect">
+       	<option selected>직접 입력</option>
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
        </select>
 <br>
 <input type="submit" value="회원가입">
-<input type="reset" value="취소">
+<input type="reset" value="다시입력" >
 </form>
+<hr>
+<button id="cancel">취소</button>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
