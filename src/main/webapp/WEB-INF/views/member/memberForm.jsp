@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
+<<<<<<< HEAD
 <script type="text/javascript">
 	$(function() {
 		// 아이디 중복 검사
@@ -87,6 +88,8 @@
 		});
 	});
 </script>
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 <!-- <script type="text/javascript">
 	$(function() {
 		
@@ -110,6 +113,7 @@
 
 </script> -->
 <form action="memberAdd" method="get">
+<<<<<<< HEAD
 *아이디: <input type="text" name="userid" id="userid"> <button id="idDuplicateCheck">중복확인</button>
 <span id="idCheckResult" style="margin-left:10px; font-size:12px; cursor:default;"></span>
 <br> 
@@ -122,11 +126,24 @@
 <input type="radio" class="usercode" name="usercode" value="20" checked="checked">일반 회원
 <input type="radio" class="usercode" name="usercode" value="30">사업자 회원<br>
 <input type="text" name="post" id="sample4_postcode" placeholder="우편번호" size="5" maxlength="5">
+=======
+*아이디:<input type="text" name="userid" id="userid">
+<span id="result"></span>
+<br> 
+*비밀번호:<input type="text" name="passwd" id="passwd"><br> 
+<!-- 비빌번호확인:<input type="text" name="passwd2" id="passwd2">
+<span id="result2"></span> 
+<br> -->
+이름:<input type="text" name="username"><br> 
+유져코드 :<input type="text" name="usercode"><br>
+<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <br>
+<<<<<<< HEAD
 전화번호: <select name="phone1">
   <option value="010">010</option>
   <option value="011">011</option>
@@ -137,15 +154,31 @@
        <input type="text" name="email2" id="email2" placeholder="직접 입력">
        <select  id="emailSelect">
        	<option selected>직접 입력</option>
+=======
+전화번호:<select name="phone1">
+  <option value="010">010</option>
+  <option value="011">011</option>
+</select>-
+<input type="text" name="phone2" >-<input type="text" name="phone3" >
+<br>
+이메일:<input type="text" name="email1" id="email1">@
+       <input type="text" name="email2" id="email2" placeholder="직접입력">
+       <select  id="emailSelect">
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
        </select>
 <br>
 <input type="submit" value="회원가입">
+<<<<<<< HEAD
 <input type="reset" value="다시입력" >
 </form>
 <hr>
 <button id="cancel">취소</button>
+=======
+<input type="reset" value="취소">
+</form>
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

@@ -1,17 +1,25 @@
 package com.service;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+=======
+import java.util.List;
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dao.GoodsDAO;
+<<<<<<< HEAD
 import com.dto.BundleDTO;
 import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
+=======
+import com.dto.GoodsDTO;
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 
 @Service
 public class GoodsService {
@@ -29,6 +37,7 @@ public class GoodsService {
 		GoodsDTO dto = dao.goodsDetail(gcode);
 		return dto;
 	}
+<<<<<<< HEAD
 	
 	public List<BundleDTO> bundleDetail(String gcode) {
 		// TODO BundleDTO
@@ -64,4 +73,6 @@ public class GoodsService {
 		List<CartDTO> list=dao.cartList(userid);
 		return list;
 	}
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 }

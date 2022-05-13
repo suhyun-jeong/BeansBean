@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMapper">
+	
+<select id="Info_selectAll" resultType="Info_BrdDTO">
+	select num, userid, type_num, title, content,regdate
+	from info_brd 
+	order by type_num asc, num asc
+	
+</select>	
+	
+<select id="Info_selectOne" resultType="Info_BrdDTO" parameterType="int">
+	select num, userid, type_num, title, content,regdate
+	from info_brd 
+	where num = #{num}
+</select>
+	
+<insert id="Info_BRD_insert" parameterType="Info_BrdDTO">
+	INSERT INTO Info_BRD (num, userid, type_num, title, content, regdate)
+	values (Info_BRD_SEQ.nextval, #{userid},
+	 #{type_num}, #{title}, #{content}, to_date(sysdate,'yy.mm.dd hh24:mi'))
+	 
+</insert>
+
+	
+	
+<select id="Cook_selectAll" resultType="Cook_BrdDTO">
+	select num, userid, type_num, title, content,regdate
+	from cook_brd 
+	order by type_num asc, num asc
+	
+</select>	
+
+<select id="Cook_selectOne" resultType="Cook_BrdDTO" parameterType="int">
+	select num, userid, type_num, title, content,regdate
+	from cook_brd 
+	where num = #{num}
+</select>
+
+<insert id="Cook_BRD_insert" parameterType="Cook_BrdDTO">
+	INSERT INTO Cook_BRD (num, userid, type_num, title, content, regdate)
+	values (Cook_BRD_SEQ.nextval, #{userid},
+	 #{type_num}, #{title}, #{content}, to_date(sysdate,'yy.mm.dd hh24:mi'))
+	 
+</insert>
+
+</mapper>

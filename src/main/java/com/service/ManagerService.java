@@ -1,7 +1,10 @@
 package com.service;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,7 @@ public class ManagerService {
 		// TODO Auto-generated method stub
 		return dao.goodsinfo(gcode);
 	}
+<<<<<<< HEAD
 
 	public List<GoodsDTO> AllGoods() {
 		// TODO Auto-generated method stub
@@ -47,4 +51,6 @@ public class ManagerService {
 		// TODO Auto-generated method stub
 		return dao.selectBundle();
 	}
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 }

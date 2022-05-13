@@ -1,8 +1,11 @@
 package com.controller;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.util.Iterator;
 
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+<<<<<<< HEAD
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -21,6 +25,15 @@ import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
 import com.service.GoodsService;
+=======
+
+import java.io.File;
+import java.util.Iterator;
+
+import com.dto.BundleDTO;
+import com.dto.GoodsDTO;
+import com.dto.VariationDTO;
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import com.service.ManagerService;
 
 
@@ -29,6 +42,7 @@ public class ManagerController {
 	@Autowired
 	ManagerService service;
 	
+<<<<<<< HEAD
 	
 	@RequestMapping(value = "/CtrlGoods")
 	public ModelAndView controlGoods() {
@@ -44,6 +58,8 @@ public class ManagerController {
 		return model;
 	}
 	
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 	@ResponseBody	//제품등록
 	@RequestMapping(value = "insertGoods", method = RequestMethod.POST)
 	public void insertGoods(GoodsDTO gDTO, Model model) {

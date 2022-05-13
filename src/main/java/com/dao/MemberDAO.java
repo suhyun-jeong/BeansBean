@@ -32,9 +32,12 @@ public class MemberDAO {
 	public int userInfoUpdate(MemberDTO mDTO) {
 		return session.update("MemberMapper.userInfoUpdate", mDTO);
 	}
+<<<<<<< HEAD
 
 	// 아이디 중복 체크
 	public int idDuplicateCheck(String inputId) {
 		return session.selectOne("MemberMapper.idDuplicateCheck", inputId);
 	}
+=======
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 }

@@ -4,22 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>Sign Up</title>
-=======
-<title>Insert title here</title>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+<title>Info_BRD</title>
 </head>
 <body>
-<H1>회원가입 화면입니다.</H1>
-
-<<<<<<< HEAD
+<h1>사업자 게시판</h1>
 	<jsp:include page="common/top.jsp" flush="true"/><br>	<!-- 상단 메뉴 바 -->
 	<jsp:include page="common/manu.jsp" flush="true"></jsp:include><br>
+	<hr>
+	<jsp:include page="boards/Info_BRD_write.jsp" flush="true"></jsp:include><br>
 	
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
-<hr>
-<jsp:include page="member/memberForm.jsp" flush="true"></jsp:include><br>
 </body>
 </html>

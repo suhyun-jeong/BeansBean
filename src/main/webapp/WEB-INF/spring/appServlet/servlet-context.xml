@@ -13,12 +13,21 @@
 <mvc:default-servlet-handler/>
 
 <!-- <mvc:view-controller path="/" view-name="main"/>  --><!-- /요청 main.jsp => controller에 생성 -->
+<<<<<<< HEAD
 <mvc:view-controller path="/goodsinsert" view-name="insertGoods"/>
 <mvc:view-controller path="/afterInsert" view-name="afterInsert"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
 
 <mvc:view-controller view-name="login" path="/loginForm"/>	<!-- /login 요청 시 login.jsp로 이동 -->
 <mvc:view-controller view-name="/cartList" path="cartList"/><!-- /cartList 요청 시 cartList.jsp로 이동 -->
+=======
+<mvc:view-controller path="/" view-name="main"/>
+<mvc:view-controller path="goodsinsert" view-name="insertGoods"/>
+<mvc:view-controller path="/memberForm" view-name="memberForm"/>
+<mvc:view-controller path="/loginForm" view-name="login" />	<!-- /login 요청 시 login.jsp로 이동 -->
+<mvc:view-controller path="/Cook_BRD" view-name="Cook_BRD" />	<!-- /login 요청 시 login.jsp로 이동 -->
+<mvc:view-controller path="/Info_BRD" view-name="Info_BRD" />	<!-- /login 요청 시 login.jsp로 이동 -->
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 
 <mvc:resources location="/WEB-INF/views/images/" mapping="/images/**"></mvc:resources>
 <mvc:resources location="/WEB-INF/views/css/" mapping="/css/**"></mvc:resources>

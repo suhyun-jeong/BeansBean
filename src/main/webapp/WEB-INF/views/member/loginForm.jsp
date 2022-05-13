@@ -7,7 +7,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 	$(function() {
+=======
+	$(document).ready(function() {
+>>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 		var input_id = $("#userid");
 		var input_pw = $("#passwd");
 		
