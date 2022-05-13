@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 
 import com.dto.MemberDTO;
 import com.service.MemberService;
@@ -38,7 +36,7 @@ public class MemberController {
 		return "main";
 	}
 	
-<<<<<<< HEAD
+
 	// 아이디 중복 체크
 	@RequestMapping(value="/idDuplicateCheck")
 	@ResponseBody
@@ -50,8 +48,7 @@ public class MemberController {
 			return "NO";
 	}
 	
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 	// 로그인
 	@RequestMapping(value="/login")
 	public String login(HttpSession session, @RequestParam Map<String, String> map) {
@@ -60,16 +57,9 @@ public class MemberController {
 		MemberDTO mDTO = service.idpwCheck(map);
 		if (mDTO != null) {
 			session.setAttribute("login", mDTO);
-			
-<<<<<<< HEAD
-
+		
 			return "redirect:./";
 
-			//return "redirect:/goodsList?gcategory=coffee";
-
-=======
-			return "main";
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 		} else {
 			session.setAttribute("loginMsg", "아이디와 비밀번호를 확인해주세요.");
 			
@@ -77,23 +67,16 @@ public class MemberController {
 		}
 	}
 	
+	
 	// 로그아웃
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session) {
 		if (session.getAttribute("login") != null)
 			session.removeAttribute("login");
-		
-<<<<<<< HEAD
-
-		return "redirect:./";
-
-		//return "redirect:/goodsList?gcategory=coffee";
-
-=======
-		return "main";
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
-	}
 	
+		return "redirect:./";
+	}
+
 //	@RequestMapping(value = "/loginCheck/myPage")
 //	public String myPage(HttpSession session) throws Exception{
 //		MemberDTO dto = (MemberDTO)session.getAttribute("login");

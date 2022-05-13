@@ -1,10 +1,8 @@
 package com.dao;
 
-<<<<<<< HEAD
+
 import java.util.List;
 
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,7 +35,6 @@ public class ManagerDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne("ManagerMapper.goodsinfo", gcode);
 	}
-<<<<<<< HEAD
 
 	public List<GoodsDTO> AllGoods() {
 		List<GoodsDTO> list = session.selectList("ManagerMapper.AllGoods");
@@ -53,7 +50,5 @@ public class ManagerDAO {
 		List<BundleDTO> list = session.selectList("ManagerMapper.selectBundle");
 		return list;
 	}
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 	
 }

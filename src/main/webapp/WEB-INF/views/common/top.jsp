@@ -7,7 +7,6 @@
 
 <!-- 로그인되어있을 때 -->
 <c:if test="${not empty login}">
-<<<<<<< HEAD
 	<p style="cursor:default;">&nbsp;<b>${login.username}</b><span style="font-size:12px;">(${login.userid})</span> 님</p>
 	
 	<a href="logout">로그아웃</a>
@@ -15,20 +14,20 @@
 	<a href="cartList">장바구니</a>
 	
 	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
-		<a href="CtrlGoods">상품 관리</a>
-		<a href="goodsinsert">상품 등록</a>
-=======
-	<p><b>${login.username}</b> 님</p>
+			<a href="CtrlGoods">상품 관리</a>
+			<a href="goodsinsert">상품 등록</a>
+		<p><b>${login.username}</b> 님</p>
+		
+		<a href="logout">로그아웃</a>
+		<a href="mypage">마이페이지</a>
+		<a href="">장바구니</a>
 	
-	<a href="logout">로그아웃</a>
-	<a href="mypage">마이페이지</a>
-	<a href="">장바구니</a>
-	
-	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
-		<a href="">판매 관리</a>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+		<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
+			<a href="">판매 관리</a>
+		</c:if>
 	</c:if>
 </c:if>
+
 
 <!-- 로그인되어있지 않을 때 -->
 <c:if test="${empty login}">

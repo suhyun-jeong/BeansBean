@@ -9,20 +9,18 @@
 
 <style type="text/css">
 	th {
-<<<<<<< HEAD
 		padding-right:20px;
 		text-align:right;
 		cursor:default;
-=======
+
 		text-align:right;
 		padding-right:20px;
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 	}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-<<<<<<< HEAD
+
 	$(function() {
 		// 도메인 자동 입력
 		$("#emailSelect").change(function() {
@@ -30,10 +28,9 @@
 		});
 		
 		// 빈칸 검사
-=======
+
 	$(document).ready(function() {
 		// 빈칸 검사		
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 		$("form").submit(function(event) {
 			var inputCheck = true;
 			
@@ -64,11 +61,10 @@
 	<table>
 		<tr>
 			<th>아이디</th>
-<<<<<<< HEAD
+
 			<td style="cursor:default;">
-=======
+
 			<td>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 				${userInfo.userid}
 				<input type="hidden" name="userid" value="${userInfo.userid}">
 				<span style="margin-left:20px;">

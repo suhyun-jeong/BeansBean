@@ -24,7 +24,7 @@
 						<td>
 							<table style='padding: 15px'>
 								<tr>
-<<<<<<< HEAD
+
 								<c:forTokens var="token" items="${dto.gimage}" delims="." varStatus="status2">
 									<c:if test="${status2.last}">
 										<%-- ${token}, ${dto.gimage} --%>
@@ -44,12 +44,12 @@
 										</c:choose>
 									</c:if>
 								</c:forTokens>
-=======
+
 									<td><a href="goodsDetail?gcode=${dto.gcode}"> <img
 											src="images/${dto.gimage}.png" border="0"
 											align="center" width="200"><!--  수정-->
 									</a></td>
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 								</tr>
 								<tr>
 

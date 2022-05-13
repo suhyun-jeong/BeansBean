@@ -2,17 +2,15 @@ package com.controller;
 
 import java.util.List;
 
-<<<<<<< HEAD
+
 import javax.servlet.http.HttpSession;
 
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,11 +20,10 @@ import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 import com.dto.VariationDTO;
-=======
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.GoodsDTO;
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 import com.service.GoodsService;
 
 @Controller
@@ -40,11 +37,9 @@ public class GoodsController {
 		// TODO 상품목록보기
 //		System.out.println(gcategory);
 		if(gcategory == null) {
-<<<<<<< HEAD
+
 			gcategory = "coffee";
-=======
-			gcategory = "liquid";
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 		}
 
 		List<GoodsDTO> list = service.goodsList(gcategory);
@@ -59,7 +54,6 @@ public class GoodsController {
 	@RequestMapping("/goodsDetail")
 	@ModelAttribute("goodsDetail")
 	public GoodsDTO goodsDetail(String gcode) {
-<<<<<<< HEAD
 //		System.out.println(gcode);
 		GoodsDTO dto = service.goodsDetail(gcode);
 //		System.out.println(dto);
@@ -110,15 +104,5 @@ public class GoodsController {
 //		return "redirect:../cartList"; //servlet-context에 등록
 //		
 //	}
-	
 
-	
-=======
-		System.out.println(gcode);
-		GoodsDTO dto = service.goodsDetail(gcode);
-		System.out.println(dto);
-		return dto;
-	}
-	
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
 }
