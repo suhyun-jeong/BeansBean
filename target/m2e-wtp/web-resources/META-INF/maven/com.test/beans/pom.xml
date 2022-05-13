@@ -164,10 +164,7 @@
 			<version>2.6</version>
 		</dependency>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 0e6c9c25306884c4fa1388d02a864d2bd13500bd
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
@@ -181,11 +178,7 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.13.2.2</version>
 		</dependency>
-<<<<<<< HEAD
-				
-=======
 
->>>>>>> 0e6c9c25306884c4fa1388d02a864d2bd13500bd
 
 	</dependencies>
 	<build>

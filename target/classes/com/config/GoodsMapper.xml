@@ -40,10 +40,6 @@
 	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
 	 from cart
 	 where userid=#{userid}
-<<<<<<< HEAD
-	</select>
-=======
 </select>
->>>>>>> 0e6c9c25306884c4fa1388d02a864d2bd13500bd
 
 </mapper>
