@@ -127,6 +127,9 @@
 			// 경고창 표시
 			if (!inputCheck)
 				alert("모든 칸을 채워주세요.");
+
+			// 가격 총합에 대한 데이터 폼에 담기
+			$("#gprice").val($("#totalPrice").text());
 			
 			return inputCheck;
 		});
@@ -135,12 +138,12 @@
 
 <form action="oneGoodsOrder" method="get">
 	<input type="hidden" name="num" value="${cDTO.num}">
-	<input type="hidden" name="userid" value="${cDTO.userid}">
+	<input type="hidden" name="userid" value="${login.userid}">
 	<input type="hidden" name="gcode" value="${cDTO.gcode}">
 	<input type="hidden" name="gname" value="${cDTO.gname}">
 	<input type="hidden" name="bcategory" value="${cDTO.bcategory}">
 	<input type="hidden" name="vcategory" value="${cDTO.vcategory}">
-	<input type="hidden" name="gprice" value="${cDTO.gprice}">
+	<input type="hidden" id="gprice" name="gprice" value="${cDTO.gprice}">
 	<input type="hidden" name="gimage" value="${cDTO.gimage}">
 
 	<h3 style="cursor:default;">주문 상품 확인</h3>
