@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +33,18 @@ public class ManagerService {
 	public GoodsDTO goodsinfo(String gcode) {
 		// TODO Auto-generated method stub
 		return dao.goodsinfo(gcode);
+	}
+
+	public List<GoodsDTO> AllGoods() {
+		// TODO Auto-generated method stub
+		return dao.AllGoods();
+	}
+	public List<VariationDTO> selectVariation() {
+		// TODO Auto-generated method stub
+		return dao.selectVariation();
+	}
+	public List<BundleDTO> selectBundle() {
+		// TODO Auto-generated method stub
+		return dao.selectBundle();
 	}
 }

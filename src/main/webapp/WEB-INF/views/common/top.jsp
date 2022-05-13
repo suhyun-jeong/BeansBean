@@ -14,7 +14,7 @@
 	<a href="cartList">장바구니</a>
 	
 	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
-		<a href="">판매 관리</a>
+		<a href="CtrlGoods">상품 관리</a>
 		<a href="goodsinsert">상품 등록</a>
 	</c:if>
 </c:if>

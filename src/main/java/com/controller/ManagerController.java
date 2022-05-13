@@ -11,10 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
+=======
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+
+>>>>>>> 5a7feaf3233e72eae37aa578666092c6fea607f8
 import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
+import com.service.GoodsService;
 import com.service.ManagerService;
 
 
@@ -22,6 +31,21 @@ import com.service.ManagerService;
 public class ManagerController {
 	@Autowired
 	ManagerService service;
+	
+	
+	@RequestMapping(value = "/CtrlGoods")
+	public ModelAndView controlGoods() {
+		List<GoodsDTO> list;
+		list = service.AllGoods();
+		List<VariationDTO> vlist = service.selectVariation();
+		List<BundleDTO> blist = service.selectBundle();
+		ModelAndView model = new ModelAndView();
+		model.addObject("AllGoods",list);
+		model.addObject("vlist",vlist);
+		model.addObject("blist",blist);
+		model.setViewName("controlGoods");
+		return model;
+	}
 	
 	@ResponseBody	//제품등록
 	@RequestMapping(value = "insertGoods", method = RequestMethod.POST)

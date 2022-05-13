@@ -77,6 +77,10 @@
 				alert("재고수량을 입력해주세요.");
 				$("#gamount").focus();
 				event.preventDefault();
+			}else if ($("#result").text() == "코드 중복") {
+				alert("중복된 코드입니다. 다시입력해주세요.");
+				$("#gcode").focus();
+				event.preventDefault();
 			}else {
 				goodsInsert();
 				imageUpload();	
