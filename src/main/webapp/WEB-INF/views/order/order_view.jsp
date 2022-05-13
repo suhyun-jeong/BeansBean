@@ -24,39 +24,42 @@
 
 <script type="text/javascript">
 	$(function() {
-		// 도매 상품일 경우 번들에서 숫자 및 단위 추출
 		var bCategory = "<c:out value='${cDTO.bcategory}' />";
 		var gPrice = parseInt($("#price").text());
-		var gAmount = $("#gamount").val();
+		var gAmount = parseInt($("#gamount").val());
 
 		
-		if (bCategory != "")	// 도매 품목일 경우
+		// 도매 상품일 경우 번들에서 숫자 및 단위 추출
+		if (bCategory != "") {	// 도매 품목일 경우
 			var bundleInt = parseInt(bCategory.replaceAll("[^\\d]", ""));	// 번들에서 숫자 추출
+			if (isNaN(bundleInt/1))	// 숫자를 추출하지 못했다면 초기값으로 1 지정
+				bundleInt = 1;
 			var bundleUnit = bCategory.replace(bundleInt.toString(), "").trim();	// 번들에서 단위 추출
 			$("#bTotal").text(bundleInt * gAmount + " (" + bundleUnit + ")");	// 전체 수량 화면에 출력
-			
+		}
+		
 		$("#totalPrice").text(gPrice * gAmount);	// 총합 출력
 		
 		
 		// 수량 입력창에 숫자만 받기
 		$("#gamount").keyup(function(event) {	// 숫자 외의 값을 입력하면 입력창 초기화
 			if (event.keyCode == 8 || event.keyCode == 13) {	// backspace or enter
-				if ($("#gamount").val().length > 0)
+				if ($("#gamount").val().length > 0)		// 입력창이 비어있지 않을 때
 					$("#totalPrice").text(gPrice * gAmount);	// 총합 출력
 				else
-					$("#totalPrice").text(0);
+					$("#totalPrice").text(0);	// 총합 0으로 초기화
 				
 				return;
 			}
 			
 			if (!((event.keyCode >= 48 && event.keyCode <= 57)	// 0~9가 아닐 경우
 					|| (event.keyCode >= 96 && event.keyCode <= 105)))	// Num Lock 키패드 0~9가 아닐 경우
-				$("#gamount").val(0);
+				$("#gamount").val(0);	// 입력창 초기화
 			
 			$("#totalPrice").text(gPrice * $("#gamount").val());	// 총합 출력
 		});
 		$("#gamount").bind("paste", function(event) {	// 붙여넣기하면 입력창 초기화
-			$("#gamount").val(0);
+			$("#gamount").val(0);	// 입력창 초기화
 		
 			$("#totalPrice").text(gPrice * $("#gamount").val());	// 총합 출력
 		});
@@ -66,14 +69,14 @@
 		$("#same1").click(function() {
 			var checked = this.checked;
 			
-			if (checked) {
+			if (checked) {	// 체크되었을 때
 				$(".userAddress").each(function(idx, ele) {
 					var input = $(".inputPlace").get(idx);
 					input.value = this.value;
 					input.setAttribute("readonly", "readonly");
 				});
 				$("#postBtn").attr("disabled", "disabled");
-			} else {
+			} else {	// 체크 해제
 				$(".inputPlace").each(function(idx, ele) {
 					this.value = "";
 					this.removeAttribute("readonly");
@@ -86,18 +89,18 @@
 		$("#same2").click(function() {
 			var checked = this.checked;
 			
-			if (checked) {
+			if (checked) {	// 체크되었을 때
 				$(".userPhone").each(function(idx, ele) {
-					if (idx == 0) {
+					if (idx == 0) {	// select
 						$("#phone1").val(this.value).prop("selected", true);
 						$("#phone1").attr("readonly", "readonly");
-					} else {
+					} else {	// input text
 						var input = $(".inputPhone").get(idx);
 						input.value = this.value;
 						input.setAttribute("readonly", "readonly");
 					}
 				});
-			} else {
+			} else {	// 체크 해제
 				$(".inputPhone").each(function(idx, ele) {
 					this.value = "";
 					this.removeAttribute("readonly");
@@ -136,14 +139,14 @@
 	});
 </script>
 
-<form action="oneGoodsOrder" method="get">
+<form action="oneGoodsOrder" method="post">
 	<input type="hidden" name="num" value="${cDTO.num}">
 	<input type="hidden" name="userid" value="${login.userid}">
 	<input type="hidden" name="gcode" value="${cDTO.gcode}">
 	<input type="hidden" name="gname" value="${cDTO.gname}">
 	<input type="hidden" name="bcategory" value="${cDTO.bcategory}">
 	<input type="hidden" name="vcategory" value="${cDTO.vcategory}">
-	<input type="hidden" id="gprice" name="gprice" value="${cDTO.gprice}">
+	<input type="hidden" id="gprice" name="gprice" value="${cDTO.gprice * cDTO.gamount}">
 	<input type="hidden" name="gimage" value="${cDTO.gimage}">
 
 	<h3 style="cursor:default;">주문 상품 확인</h3>

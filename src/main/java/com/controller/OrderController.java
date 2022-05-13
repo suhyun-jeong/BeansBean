@@ -1,5 +1,7 @@
 package com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,15 +16,7 @@ public class OrderController {
 	// 상품 주문 화면
 	@RequestMapping(value="/orderForm")
 	public ModelAndView orderForm(CartDTO cDTO) {
-		/*
-		CartDTO cDTO = new CartDTO(10, "aaa", "C00001", "커피필 원두커피 1kg", 9200, "bca", "vca", 120, "C1.jpg");
-		if (cDTO.getUserid() == null)
-			cDTO.setUserid("admin");
-		cDTO.setNum(111);
-		cDTO.setBcategory("50 박스");
-		cDTO.setGamount(5);
 		System.out.println(cDTO);
-		 */
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("cDTO", cDTO);
@@ -33,10 +27,13 @@ public class OrderController {
 	
 	// 상품 한 개 주문
 	@RequestMapping(value="/oneGoodsOrder")
-	public String oneGoodsOrder(OrderinfoDTO oiDTO) {
+	public String oneGoodsOrder(HttpSession session, OrderinfoDTO oiDTO) {
 		System.out.println(oiDTO);
+
+		session.setAttribute("orderMsg", "상품 구매 성공");
 		
-		return "redirect:./";
+		return "order";
+		// return "redirect:./";
 	}
 	
 }
