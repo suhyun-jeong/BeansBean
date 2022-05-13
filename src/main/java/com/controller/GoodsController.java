@@ -54,6 +54,7 @@ public class GoodsController {
 	
 	@ResponseBody
 	@RequestMapping("bundleDetail")
+	@ModelAttribute("cartList")
 	public List<BundleDTO> bundleDetail(String gcode) {
 		//TODO BundleDTO 
 		System.out.println(gcode);
@@ -83,7 +84,7 @@ public class GoodsController {
 		cart.setUserid(mDTO.getUserid());
 		session.setAttribute("mesg", cart.getGcode());
 		service.cartAdd(cart);
-		return "redirect:../goodsDetail?gCode="+cart.getGcode();
+		return "redirect:../goodsDetail?gcode="+cart.getGcode();
 	}
 	
 //	@RequestMapping("/cartList")
@@ -96,11 +97,6 @@ public class GoodsController {
 //		
 //	}
 	
-	@RequestMapping("/cartList")
-	public String cartList(String cartList) {
-		
-		return "redirect:../cartList"; //servlet-context에 등록
-		
-	}
+
 	
 }

@@ -45,25 +45,25 @@ public class GoodsDAO {
 	}
 	
 	public void cartAdd(CartDTO cart) {
-		session.insert("CartMapper.cartAdd", cart);	
+		session.insert("GoodsMapper.cartAdd", cart);	
 		
 	}
 	
 	public void cartUpdate(Map<String, String> map) {
-		int n = session.update("CartMapper.cartUpdate", map);
+		int n = session.update("GoodsMapper.cartUpdate", map);
 		
 	}
 	public void cartDelete(int num) {
-		int n= session.delete("CartMapper.cartDel", num);
+		int n= session.delete("GoodsMapper.cartDel", num);
 		
 	}
 	public void delAllCart(ArrayList<String> list) {
-		int n = session.delete("CartMapper.cartAllDel", list);
+		int n = session.delete("GoodsMapper.cartAllDel", list);
 		
 	}
 
 	public List<CartDTO> cartList(String userid) {
-		List<CartDTO> list = session.selectList("CartMapper.cartList", userid);
+		List<CartDTO> list = session.selectList("GoodsMapper.cartList", userid);
 		return list;
 	}
 }

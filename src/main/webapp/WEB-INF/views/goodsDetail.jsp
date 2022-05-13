@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>상품자세히보기화면입니다.</h1>
-<jsp:include page="common/manu.jsp" flush="true"></jsp:include><br>
+<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <hr>
 <jsp:include page="goods/goodsDetail.jsp" flush="true"></jsp:include><br>
