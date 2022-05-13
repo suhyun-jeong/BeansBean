@@ -15,7 +15,7 @@
 
 <<<<<<< HEAD
 	<jsp:include page="common/top.jsp" flush="true"/><br>	<!-- 상단 메뉴 바 -->
-	<jsp:include page="common/manu.jsp" flush="true"></jsp:include><br>
+	<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 	
 =======
 >>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
