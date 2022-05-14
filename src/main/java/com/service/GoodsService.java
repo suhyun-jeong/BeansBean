@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,5 +64,10 @@ public class GoodsService {
 	public List<CartDTO> cartList(String userid) {
 		List<CartDTO> list=dao.cartList(userid);
 		return list;
+	}
+
+	// 남은 재고 계산하여 goods 테이블 업데이트
+	public int updateAmount(HashMap<String, Object> oiMap) {
+		return dao.updateAmount(oiMap);
 	}
 }

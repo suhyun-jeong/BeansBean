@@ -9,6 +9,7 @@
 <title>MAIN</title>
 <c:if test="${not empty success }">
 	<script type="text/javascript">alert("${success}")</script>
+	<% session.removeAttribute("success"); %>
 </c:if>
 </head>
 <body>

@@ -112,7 +112,7 @@
 		// 빈칸 검사
 		$("form").submit(function(event) {
 			// 상품 수량 입력란 확인
-			if ($("#gamount").val().length < 1 || $("#gamount").val() == 0) {
+			if ($("#gamount").val().length < 1 || $("#gamount").val() == 0 || isNaN($("#gamount").val())) {
 				alert("상품 수량을 확인해주세요.");
 				$("#gamount").focus();
 				return false;
