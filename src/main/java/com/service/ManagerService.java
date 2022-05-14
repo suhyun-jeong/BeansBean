@@ -47,4 +47,34 @@ public class ManagerService {
 		// TODO Auto-generated method stub
 		return dao.selectBundle();
 	}
+
+	public void goodsDelete(String gcode) {
+		// TODO Auto-generated method stub
+		dao.goodsDelete(gcode);
+	}
+
+	public List<VariationDTO> variationBygcode(String gcode) {
+		// TODO Auto-generated method stub
+		return dao.variationBygcode(gcode);
+	}
+
+	public List<BundleDTO> bundleBygcode(String gcode) {
+		// TODO Auto-generated method stub
+		return dao.bundleBygcode(gcode);
+	}
+
+	public void variationDelete(String gcode) {
+		// TODO Auto-generated method stub
+		dao.variationDelete(gcode);
+	}
+
+	public void bundleDelete(String gcode) {
+		dao.bundleDelete(gcode);
+		
+	}
+
+	public void goodsUpdate(GoodsDTO gDTO) {
+		// TODO Auto-generated method stub
+		dao.goodsUpdate(gDTO);
+	}
 }

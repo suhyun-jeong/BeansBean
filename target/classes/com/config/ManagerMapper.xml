@@ -21,6 +21,14 @@
 	select * from goods where gcode = #{gcode}
 </select>
 
+<select id="variationBygcode" parameterType="String" resultType="VariationDTO"> 
+	select * from variation where gcode = #{gcode}
+</select>
+
+<select id="bundleBygcode" parameterType="String" resultType="BundleDTO"> 
+	select * from bundle where gcode = #{gcode}
+</select>
+
 <select id="AllGoods" resultType="GoodsDTO">
 	select * from goods 
 </select>
@@ -32,4 +40,21 @@
 <select id="selectBundle" resultType="BundleDTO">
 	select * from bundle
 </select>
+
+<delete id="goodsDelete" parameterType="String">
+	delete from goods where gcode = #{gcode}
+</delete>
+<delete id="variationDelete" parameterType="String">
+	delete from variation where gcode = #{gcode}
+</delete>
+
+<delete id="bundleDelete" parameterType="String">
+	delete from bundle where gcode = #{gcode}
+</delete>
+
+<update id="goodsUpdate" parameterType="GoodsDTO">
+  	update goods 
+  	set gcategory =#{gcategory}, gname =#{gname}, gprice =#{gprice}, gamount =#{gamount}, gimage =#{gimage}
+  	 where gcode = #{gcode}
+   </update>
 </mapper>

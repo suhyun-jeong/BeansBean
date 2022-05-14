@@ -91,7 +91,7 @@ ${goodsDetail.gname}
 					</div>
 						<div style='width:50%; float:left;'>
 						<ul>
-							<li class="td_title"><span>상품코드</span><span>${goodsDetail.gcode }</span></li>
+							<li class="td_title"><span>상품코드</span><span id="findgcode">${goodsDetail.gcode }</span></li>
 						<%-- 	<li class="td_default" style='padding-left: 30px'>
 								${goodsDetail.gcode }
 							</li> --%>
