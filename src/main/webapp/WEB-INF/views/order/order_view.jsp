@@ -131,9 +131,6 @@
 			if (!inputCheck)
 				alert("모든 칸을 채워주세요.");
 
-			// 가격 총합에 대한 데이터 폼에 담기
-			$("#gprice").val($("#totalPrice").text());
-			
 			return inputCheck;
 		});
 	});
@@ -146,7 +143,7 @@
 	<input type="hidden" name="gname" value="${cDTO.gname}">
 	<input type="hidden" name="bcategory" value="${cDTO.bcategory}">
 	<input type="hidden" name="vcategory" value="${cDTO.vcategory}">
-	<input type="hidden" id="gprice" name="gprice" value="${cDTO.gprice * cDTO.gamount}">
+	<input type="hidden" id="gprice" name="gprice" value="${cDTO.gprice}">
 	<input type="hidden" name="gimage" value="${cDTO.gimage}">
 
 	<h3 style="cursor:default;">주문 상품 확인</h3>

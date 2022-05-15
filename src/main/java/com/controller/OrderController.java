@@ -52,12 +52,16 @@ public class OrderController {
 		int goodsAmount = goodsService.goodsDetail(oiDTO.getGcode()).getGamount();
 		if (goodsAmount - oiDTO.getGamount() < 0) {	// 재고보다 많은 수량의 상품 구매 시
 			session.setAttribute("success", "상품 구매 실패 - 재고 부족");
+			
+			return "redirect:./";
 		} else {
 			// 1. orderinfo 테이블에 레코드 추가
+			
+			/* 비회원 구매 시 userid 컬럼 not null 처리 1 */
 			if (oiDTO.getUserid().length() < 1) {
-				/* 비회원 구매 시 userid 컬럼 not null 처리 */
 				oiDTO.setUserid("비회원");	// 임시 데이터로 member 테이블에 존재하는 아무 userid 입력하기
 			}
+			
 			int insertOrderinfo = orderService.oneGoodsOrder(oiDTO);
 			System.out.println("orderinfo insert: " + insertOrderinfo);
 			
@@ -74,10 +78,16 @@ public class OrderController {
 			int updateGoods = goodsService.updateAmount(oiMap);
 			System.out.println("goods update: " + updateGoods);
 			
+			/* 비회원 구매 시 userid 컬럼 not null 처리 2 */
+			if (oiDTO.getUserid().equals("비회원")) {
+				oiDTO.setUserid(null);
+			}
+			
+			session.setAttribute("oiDTO", oiDTO);
 			session.setAttribute("success", "상품 구매 성공");
+			
+			return "order_success";
 		}
-		
-		return "redirect:./";
 	}
 	
 }
