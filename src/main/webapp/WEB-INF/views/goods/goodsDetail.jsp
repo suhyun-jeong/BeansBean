@@ -1,8 +1,7 @@
 <<<<<<< HEAD
 <%@page import="com.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,6 +16,7 @@
 
 <script>
 
+	
 	//bundle, variation
 	$(document).ready(function() {
 		
@@ -62,19 +62,17 @@
 				});  //end ajax
 				
 		})//end ready
+		
+		//장바구니에 담기
+		$(function() {
+			$("#cart").on("click", function() {
+				$("form").attr("action", "loginCheck/cartAdd")
+			});
 	
 </script>
 
 
-<script>
 
-	/* $(function() {
-		$("#cart").on("click", function() {
-			$("form").attr("action", "loginCheck/cartAdd")
-		})
-	}) */
-
-</script>
 <%-- <c:if test="${!empty mesg }">
 <script>
 	alert("${mesg}상품을 장바구니에 담았습니다.");
