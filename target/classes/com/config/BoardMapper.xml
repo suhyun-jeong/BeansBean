@@ -46,4 +46,12 @@
 	 
 </insert>
 
+<select id="CookNumGet" resultType="int">
+	select max(num) from cook_BRD
+</select>
+
+<insert id="ingrementInsert" parameterType="IngrementDTO">
+	INSERT INTO ingrement (ingreno, num, ingre, capacity)
+	values (Ingrement_SEQ.nextval, #{num}, #{ingre}, #{capacity})
+</insert>
 </mapper>

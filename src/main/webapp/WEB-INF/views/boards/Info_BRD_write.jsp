@@ -8,6 +8,7 @@
 	$(document).ready(function () {
 		
 		
+		
 		$("#btnSave").click(function (event) {
 			
 			var title = $("#title").val();
@@ -26,7 +27,11 @@
 			
 			
 		})
-	})
+	}); //ready end
+	
+	
+	
+	
 		
 	
 	

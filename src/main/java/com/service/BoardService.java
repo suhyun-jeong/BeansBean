@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dao.BoardDAO;
 import com.dto.Cook_BrdDTO;
 import com.dto.Info_BrdDTO;
+import com.dto.IngrementDTO;
 
 @Service
 public class BoardService {
@@ -39,6 +40,14 @@ public class BoardService {
 	public Info_BrdDTO Info_BRD_DetailView(int num) {
 		Info_BrdDTO dto = dao.Info_BRD_DetailView(num);
 		return dto;
+	}
+	public int CookNumGet() {
+		// TODO Auto-generated method stub
+		return dao.CookNumGet();
+	}
+	public void ingrementInsert(IngrementDTO ingre) {
+		// TODO Auto-generated method stub
+		dao.ingrementInsert(ingre);
 	}
 	
 }
