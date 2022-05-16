@@ -42,4 +42,11 @@
 	 where userid=#{userid}
 </select>
 
+<select id="cartByNum" parameterType="int" 
+	resultType="CartDTO">
+	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+	 from cart
+	 where num=#{num}
+	</select>
+
 </mapper>

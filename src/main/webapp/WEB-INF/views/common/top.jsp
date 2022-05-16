@@ -18,7 +18,7 @@
 			<a href="goodsinsert">상품 등록</a>
 		<p><b>${login.username}</b> 님</p>
 		
-		<a href="logout">로그아웃</a>
+	<a href="logout">로그아웃</a>
 		<a href="mypage">마이페이지</a>
 		<a href="">장바구니</a>
 	

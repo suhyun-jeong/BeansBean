@@ -90,19 +90,19 @@ public class GoodsController {
 	public String cartAdd(CartDTO cart, HttpSession session) {
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
 		cart.setUserid(mDTO.getUserid());
-		session.setAttribute("mesg", cart.getGcode());
+//		session.setAttribute("mesg", cart.getGcode());
 		service.cartAdd(cart);
 		return "redirect:../goodsDetail?gcode="+cart.getGcode();
 	}
 	
-//	@RequestMapping("/cartList")
-//	public String cartList(RedirectAttributes attr, HttpSession session) {
-//		MemberDTO dto= (MemberDTO)session.getAttribute("login");
-//		String userid=dto.getUserid();
-//		List<CartDTO> list =service.cartList(userid);
-//		attr.addFlashAttribute("cartList", list);
-//		return "redirect:../cartList"; //servlet-context에 등록
-//		
-//	}
+	@RequestMapping("loginCheck/cartList")
+	public String cartList(RedirectAttributes attr, HttpSession session) {
+		MemberDTO dto= (MemberDTO)session.getAttribute("login");
+		String userid=dto.getUserid();
+		List<CartDTO> list =service.cartList(userid);
+		attr.addFlashAttribute("cartList", list);
+		return "redirect:../cartList"; //servlet-context에 등록
+		
+	}
 
 }
