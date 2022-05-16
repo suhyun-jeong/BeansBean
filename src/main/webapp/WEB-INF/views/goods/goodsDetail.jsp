@@ -16,6 +16,7 @@
 
 <script>
 
+	
 	//bundle, variation
 	$(document).ready(function() {
 		
@@ -61,19 +62,17 @@
 				});  //end ajax
 				
 		})//end ready
+		
+		//장바구니에 담기
+		$(function() {
+			$("#cart").on("click", function() {
+				$("form").attr("action", "loginCheck/cartAdd")
+			});
 	
 </script>
 
 
-<script>
 
-	/* $(function() {
-		$("#cart").on("click", function() {
-			$("form").attr("action", "loginCheck/cartAdd")
-		})
-	}) */
-
-</script>
 <%-- <c:if test="${!empty mesg }">
 <script>
 	alert("${mesg}상품을 장바구니에 담았습니다.");
