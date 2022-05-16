@@ -11,7 +11,7 @@
 		$("#btnBack").click(function () {
 		
 		})
-	}
+	})
 	
 </script>
    <h2> 래시피 게시글 자세히 보기 </h2> 

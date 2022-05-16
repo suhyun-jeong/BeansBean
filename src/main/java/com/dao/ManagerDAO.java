@@ -50,5 +50,36 @@ public class ManagerDAO {
 		List<BundleDTO> list = session.selectList("ManagerMapper.selectBundle");
 		return list;
 	}
+
+	public void goodsDelete(String gcode) {
+		// TODO Auto-generated method stub
+		session.delete("ManagerMapper.goodsDelete", gcode);
+		
+	}
+
+	public List<VariationDTO> variationBygcode(String gcode) {
+		// TODO Auto-generated method stub
+		return session.selectList("ManagerMapper.variationBygcode", gcode);
+	}
+
+	public List<BundleDTO> bundleBygcode(String gcode) {
+		// TODO Auto-generated method stub
+		return session.selectList("ManagerMapper.bundleBygcode", gcode);
+	}
+
+	public void variationDelete(String gcode) {
+		// TODO Auto-generated method stub
+		session.delete("ManagerMapper.variationDelete",gcode);
+	}
+
+	public void bundleDelete(String gcode) {
+		// TODO Auto-generated method stub
+		session.delete("ManagerMapper.bundleDelete",gcode);
+	}
+
+	public void goodsUpdate(GoodsDTO gDTO) {
+		// TODO Auto-generated method stub
+		session.update("ManagerMapper.goodsUpdate",gDTO);
+	}
 	
 }

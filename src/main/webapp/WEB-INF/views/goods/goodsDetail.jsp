@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 <%@page import="com.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-=======
->>>>>>> 37c27722f9f3af1a7a522a9276cb0f02423895b5
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -123,7 +122,9 @@ ${goodsDetail.gname}
 					</div>
 						<div style='width:50%; float:left;'>
 						<ul>
+
 							<li class="td_title"><span>상품코드</span><span id=findgcode>${goodsDetail.gcode }</span></li>
+
 						<%-- 	<li class="td_default" style='padding-left: 30px'>
 								${goodsDetail.gcode }
 							</li> --%>

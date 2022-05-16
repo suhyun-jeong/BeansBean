@@ -3,8 +3,6 @@ package com.controller;
 
 import java.io.File;
 import java.util.Iterator;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,25 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import org.springframework.web.servlet.ModelAndView;
-
-
-import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
-import com.service.GoodsService;
-
-
 import java.io.File;
 import java.util.Iterator;
-
 import com.dto.BundleDTO;
 import com.dto.GoodsDTO;
 import com.dto.VariationDTO;
+
 
 import com.service.ManagerService;
 
@@ -45,8 +35,7 @@ public class ManagerController {
 	
 	@RequestMapping(value = "/CtrlGoods")
 	public ModelAndView controlGoods() {
-		List<GoodsDTO> list;
-		list = service.AllGoods();
+		List<GoodsDTO> list = service.AllGoods();
 		List<VariationDTO> vlist = service.selectVariation();
 		List<BundleDTO> blist = service.selectBundle();
 		ModelAndView model = new ModelAndView();
@@ -55,6 +44,43 @@ public class ManagerController {
 		model.addObject("blist",blist);
 		model.setViewName("controlGoods");
 		return model;
+	}
+	
+	@ResponseBody	//제품 수정
+	@RequestMapping(value = "goodsUpdate")
+	public void goodsUpdate(GoodsDTO gDTO) {
+		System.out.println(gDTO);
+		service.goodsUpdate(gDTO);
+		
+	}
+	
+	@ResponseBody	//종류, 번들 삭제
+	@RequestMapping(value = "delVriBud")
+	public void delVriBud(String gcode) {
+		service.variationDelete(gcode);
+		service.bundleDelete(gcode);
+		
+	}
+	
+	@ResponseBody	//제품삭제
+	@RequestMapping(value = "goodsDelete")
+	public void goodsDelete(String gcode) {
+		service.goodsDelete(gcode);
+		
+	}
+	
+	@RequestMapping(value="/goodsUpdatePage")
+	public ModelAndView goodsUpdatePage(String gcode) {
+		GoodsDTO gdto = service.goodsinfo(gcode);
+		List<VariationDTO> vlist = service.variationBygcode(gcode);
+		List<BundleDTO> blist = service.bundleBygcode(gcode);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("gdto", gdto);
+		mav.addObject("vlist", vlist);
+		mav.addObject("blist", blist);
+		mav.setViewName("goodsPage");
+		
+		return mav;
 	}
 	
 	@ResponseBody	//제품등록
