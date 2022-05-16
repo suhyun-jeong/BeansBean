@@ -10,7 +10,7 @@
 	<h1>로그인 화면입니다.</h1>
 
 	<jsp:include page="common/top.jsp" flush="true" />	<!-- 상단 메뉴 바 -->
-
+	<jsp:include page="common/menu.jsp" flush="true" /><br>
 	<hr>
 	
 	<jsp:include page="member/loginForm.jsp" flush="true" />	<!-- 로그인 폼 -->
