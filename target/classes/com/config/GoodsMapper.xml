@@ -31,15 +31,15 @@
 <insert id="cartAdd" parameterType="CartDTO">
 		insert into cart (num, userid,gcode,gname,gprice,
 		        bcategory,vcategory,gamount,gimage)
+		        
 		values(cart_seq.nextval,#{userid},#{gcode},#{gname},#{gprice},
 		        #{bcategory},#{vcategory}, #{gamount}, #{gimage} )
 	</insert>
 	
-<select id="cartList" parameterType="string" 
-	resultType="CartDTO">
-	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+<select id="cartList" parameterType="string" resultType="CartDTO">
+	 select *
 	 from cart
-	 where userid=#{userid}
+	 where userid = #{userid}
 </select>
 
 
@@ -48,15 +48,6 @@
 	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
 	 from cart
 	 where num=#{num}
-	</select>
-
-
-	<select id="cartByNum" parameterType="int" 
-	resultType="CartDTO">
-	  select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
-	 from cart
-	 where num=#{num}
-	 
 	</select>
 
 	<delete id="cartAllDel" parameterType="arraylist">
