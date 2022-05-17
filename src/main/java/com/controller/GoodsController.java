@@ -58,7 +58,6 @@ public class GoodsController {
 	
 	@ResponseBody
 	@RequestMapping("bundleDetail")
-	@ModelAttribute("cartList")
 	public List<BundleDTO> bundleDetail(String gcode) {
 		//TODO BundleDTO 
 		System.out.println(gcode);
@@ -81,13 +80,17 @@ public class GoodsController {
 		return list;
 	}
 	
-	
 	@RequestMapping("/loginCheck/cartAdd")
 	public String cartAdd(CartDTO cart, HttpSession session) {
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
-		cart.setUserid(mDTO.getUserid());
-		session.setAttribute("mesg", cart.getGcode());
-		service.cartAdd(cart);
+		
+		if (mDTO != null) {
+			System.out.println(mDTO.getUserid());
+			cart.setUserid(mDTO.getUserid());
+			System.out.println(cart);
+			session.setAttribute("mesg", cart.getGcode());
+			service.cartAdd(cart);
+		}
 		return "redirect:../goodsDetail?gcode="+cart.getGcode();
 	}
 	

@@ -29,10 +29,10 @@
 </select>
 
 <insert id="cartAdd" parameterType="CartDTO">
-		insert into cart (num, userid,gCode,gName,gPrice,
-		        bCategory,vCategory,gAmount,gImage)
-		values(cart_seq.nextval, #{num},#{userid},#{gCode},#{gName},#{gPrice},
-		        #{bCategory},#{vCategory}, #{gAmount}, #{gImage} )
+		insert into cart (num, userid,gcode,gname,gprice,
+		        bcategory,vcategory,gamount,gimage)
+		values(cart_seq.nextval,#{userid},#{gcode},#{gname},#{gprice},
+		        #{bcategory},#{vcategory}, #{gamount}, #{gimage} )
 	</insert>
 	
 <select id="cartList" parameterType="string" 

@@ -51,7 +51,7 @@ public class GoodsService {
 
 	public void cartAdd(CartDTO cart) {
 		dao.cartAdd(cart);
-		
+	
 	}
 	
 	public void cartUpdate(Map<String, String> map) {
