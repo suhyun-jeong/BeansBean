@@ -29,10 +29,10 @@
 </select>
 
 <insert id="cartAdd" parameterType="CartDTO">
-		insert into cart (num, userid,gCode,gName,gPrice,
-		        bCategory,vCategory,gAmount,gImage)
-		values(cart_seq.nextval, #{num},#{userid},#{gCode},#{gName},#{gPrice},
-		        #{bCategory},#{vCategory}, #{gAmount}, #{gImage} )
+		insert into cart (num, userid,gcode,gname,gprice,
+		        bcategory,vcategory,gamount,gimage)
+		values(cart_seq.nextval,#{userid},#{gcode},#{gname},#{gprice},
+		        #{bcategory},#{vcategory}, #{gamount}, #{gimage} )
 	</insert>
 	
 <select id="cartList" parameterType="string" 
@@ -42,6 +42,7 @@
 	 where userid=#{userid}
 </select>
 
+<<<<<<< HEAD
 <select id="cartByNum" parameterType="int" 
 	resultType="CartDTO">
 	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
@@ -49,4 +50,36 @@
 	 where num=#{num}
 	</select>
 
+=======
+	<select id="cartByNum" parameterType="int" 
+	resultType="CartDTO">
+	  select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+	 from cart
+	 where num=#{num}
+	 
+	</select>
+
+	<delete id="cartAllDel" parameterType="arraylist">
+	  delete
+	  from cart
+	  where num IN 
+	  <foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	
+	<delete id="cartDel" parameterType="int">
+		delete from cart
+		where num=#{num}
+	</delete>
+
+	<update id="cartUpdate" parameterType="hashmap">
+	 update cart
+	 set gAmount= #{gAmount}
+	 where num=#{num}
+	</update>
+
+>>>>>>> 372abd36b050dc1e9d832db763d5d556cd684b77
 </mapper>

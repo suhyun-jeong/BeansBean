@@ -54,8 +54,8 @@ public class GoodsDAO {
 	}
 	
 	public void cartAdd(CartDTO cart) {
-		session.insert("GoodsMapper.cartAdd", cart);	
-		
+		int n = session.insert("GoodsMapper.cartAdd", cart);	
+		System.out.println(n);
 	}
 	
 	public void cartUpdate(Map<String, String> map) {

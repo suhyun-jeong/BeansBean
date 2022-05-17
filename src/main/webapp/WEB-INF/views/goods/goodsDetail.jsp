@@ -61,6 +61,7 @@
 					}
 				});  //end ajax
 				
+<<<<<<< HEAD
 				//장바구니에 담기
 				$("#cart").on("click",function(){
 					console.log("cartadd 버튼클릭");
@@ -87,12 +88,27 @@
 </script>
 
 
+=======
+				
+				$("#cart").on("click", function() {
+					$("form").attr("action", "loginCheck/cartAdd")
+				});//end clickevent
+		});//end ready
+		
+</script>
+
+
+
+
+>>>>>>> 372abd36b050dc1e9d832db763d5d556cd684b77
 ${goodsDetail}
 <FORM name="goodDetailForm" method="GET" action="#"><!--action을 막음 --><!-- hidden data -->
 	    <input type="hidden" name="gimage" value="${goodsDetail.gimage}"> 
-	    <input type="hidden" name="gcode" value="${goodsDetail.gcode}">
+	    <input type="hidden" name="gCode" value="${goodsDetail.gcode}">
 	     <input	type="hidden" name="gname" value="${goodsDetail.gname}"> 
 	     <input	type="hidden" name="gprice" value="${goodsDetail.gprice}">
+	     <input type="hidden" name="gamount" value="${goodsDetail.gamount}">
+
 
 <% 
 	MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -206,6 +222,9 @@ ${goodsDetail.gname}
 		<button id="cart">장바구니</button>
 	</div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 372abd36b050dc1e9d832db763d5d556cd684b77
 
 </FORM>
