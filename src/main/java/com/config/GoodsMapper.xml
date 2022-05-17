@@ -42,4 +42,34 @@
 	 where userid=#{userid}
 </select>
 
+	<select id="cartByNum" parameterType="int" 
+	resultType="CartDTO">
+	  select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
+	 from cart
+	 where num=#{num}
+	 
+	</select>
+
+	<delete id="cartAllDel" parameterType="arraylist">
+	  delete
+	  from cart
+	  where num IN 
+	  <foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	
+	<delete id="cartDel" parameterType="int">
+		delete from cart
+		where num=#{num}
+	</delete>
+
+	<update id="cartUpdate" parameterType="hashmap">
+	 update cart
+	 set gAmount= #{gAmount}
+	 where num=#{num}
+	</update>
+
 </mapper>

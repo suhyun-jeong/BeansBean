@@ -61,26 +61,37 @@
 					}
 				});  //end ajax
 				
-		})//end ready
+				$(function() {
+					$("#cart").on("click", function() {
+					});
+					$.ajax({
+						url: "loginCheck/cartAdd",
+						type: "POST",
+						data: {gcode: $("#findgcode").text()},
+						success: function (result) {
+							console.log("cart담기 클릭");
+							$(data).each(function (index, value) {
+								//console.log(index);
+								//console.log(data[index]['num']);
+								$('#vcategory').append("<option value='" + data[index]['vcategory']+"'>"
+									+ data[index]['vcategory'] + "</option>");
+								//console.log(data[0]);
+							})
+						},
+						error: function(data) {
+							console.log(data);
+						}
+					});  //end ajax
+				
+		});//end ready
 		
-		//장바구니에 담기
-		$(function() {
-			$("#cart").on("click", function() {
-				$("form").attr("action", "loginCheck/cartAdd")
-			});
+		
+		
 	
 </script>
 
 
 
-<%-- <c:if test="${!empty mesg }">
-<script>
-	alert("${mesg}상품을 장바구니에 담았습니다.");
-</script>
-<% if(session.getAttribute("mesg")!= null){
-	session.removeAttribute("mesg");
-} %>
-</c:if> --%>
 
 ${goodsDetail}
 <FORM name="goodDetailForm" method="GET" action="#"><!--action을 막음 --><!-- hidden data -->

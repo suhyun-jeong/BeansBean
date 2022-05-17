@@ -1,7 +1,8 @@
 package com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,10 +20,6 @@ import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 import com.dto.VariationDTO;
-
-import org.springframework.web.servlet.ModelAndView;
-
-import com.dto.GoodsDTO;
 import com.service.GoodsService;
 
 @Controller
@@ -95,14 +91,36 @@ public class GoodsController {
 		return "redirect:../goodsDetail?gcode="+cart.getGcode();
 	}
 	
-//	@RequestMapping("/cartList")
-//	public String cartList(RedirectAttributes attr, HttpSession session) {
-//		MemberDTO dto= (MemberDTO)session.getAttribute("login");
-//		String userid=dto.getUserid();
-//		List<CartDTO> list =service.cartList(userid);
-//		attr.addFlashAttribute("cartList", list);
-//		return "redirect:../cartList"; //servlet-context에 등록
-//		
-//	}
+	@RequestMapping("/cartList")
+	public String cartList(RedirectAttributes attr, HttpSession session) {
+		MemberDTO dto= (MemberDTO)session.getAttribute("login");
+		String userid=dto.getUserid();
+		List<CartDTO> list =service.cartList(userid);
+		attr.addFlashAttribute("cartList", list);
+		return "redirect:../cartList"; //servlet-context에 등록
+		
+	}
+	
+	@RequestMapping(value = "/loginCheck/cartDelete")
+	@ResponseBody
+	public void cartDelte(@RequestParam("num") int num) {
+		System.out.println(num);
+		service.cartDelete(num);
+	}
+	
+	@RequestMapping(value = "/loginCheck/delAllCart")
+	public String delAllCart(@RequestParam("check") ArrayList<String> list) {
+		System.out.println(list);
+		service.delAllCart(list);
+		return "redirect:../loginCheck/cartList";
+	}
+	
+	
+	@RequestMapping(value = "/loginCheck/cartUpdate")
+	@ResponseBody
+	public void cartUpdate(@RequestParam Map<String, String>map) {
+		System.out.println(map);
+		service.cartUpdate(map);
+	}
 
 }
