@@ -2,6 +2,7 @@ package com.service;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,4 +73,11 @@ public class GoodsService {
 		return list;
 	}
 
+<<<<<<< HEAD
+=======
+	// 남은 재고 계산하여 goods 테이블 업데이트
+	public int updateAmount(HashMap<String, Object> oiMap) {
+		return dao.updateAmount(oiMap);
+	}
+>>>>>>> eb1840dd75a83acab25ca3badd393a99ac4df445
 }

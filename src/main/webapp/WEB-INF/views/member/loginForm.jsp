@@ -5,6 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<style type="text/css">
+	span {
+		display:inline-block;
+		width:70px;
+		cursor:default;
+	}
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -41,18 +49,14 @@
 <form action="login" method="post">
 	<table>
 		<tr>
-			<td>아이디</td>
 			<td>
-				<input type="text" name="userid" id="userid" class="loginInput">
+				<span style="display:inline-block;width:70px;cursor:default;">아이디: </span> 
+				<input type="text" name="userid" id="userid" class="loginInput"><br>
+				<span style="display:inline-block;width:70px;cursor:default;">비밀번호: </span>
+				<input type="text" name="passwd" id="passwd" class="loginInput">
 			</td>
-			<td rowspan="2">
+			<td>
 				<input type="submit" value="로그인" style="width:60px;height:50px;">
-			</td>
-		</tr>
-		<tr>
-			<td>비밀번호</td>
-			<td>
-				<input type="text" name="passwd" id="passwd" class="loginInput"><br>
 			</td>
 		</tr>
 	</table>
