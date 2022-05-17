@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("input:radio[name='gcategory']:radio[value='${gdto.gcategory}']").prop('checked', true); 
+		
 		$("#image").change(function() {//gimage 변경
 			var form = new FormData();
 			form.append("image",$("#image")[0].files[0]);
@@ -15,7 +19,7 @@
 				processData : false,
 				success: function (data,status,xhr) {
 					$("#gimage").val(data);
-					console.log($("#gimage").val());
+					$("#fakeImage").val(data);
 				},
 				error: function(xhr,status,error) {
 					console.log(error);
@@ -24,38 +28,21 @@
 		});
 		
 		 $("#vADD").click(function() {//제품종류 input 추가
-			 event.preventDefault();
-			 if ($("#Variation").children("#emptyVariation").length != 0) {	
-				$("#Variation").children("#emptyVariation").remove();
-			}
-			$("#Variation").append("<div class='VRI'>종류:<input type='text' name='vcategory'></div>");
+				event.preventDefault();
+				if ($("#Variation").children("#emptyVariation").length != 0) {	
+					$("#Variation").children("#emptyVariation").remove();
+				}
+				$("#Variation").append("<div class='VRI'>종류:<input type='text' name='vcategory'></div>");
 		}); //vADD end
-			
+				
 		 $("#bADD").click(function() {//번들 input 추가
-			 event.preventDefault();
+			event.preventDefault();
 			if ($("#Bundle").children("#emptyBundle").length != 0) {	
 				$("#Bundle").children("#emptyBundle").remove();
 			}
 			$("#Bundle").append("<div class='BUD'>번들:<input type='text' name='bcategory'> 번들가격:<input type='text' name='bprice'><br></div>");
 			}); //bADD end
-		
-	
-		$("#gcode").keyup(function() {//코드중복 검사
-			$.ajax({
-				url:"gcodeDuplicateCheck",
-				type: "get",
-				data: {gcode : $("#gcode").val()}, 
-				dataType: "text",
-				success: function (data,status,xhr) {
-					$("#result").text(data);
-				},
-				error: function(xhr,status,error) {
-					console.log(error);
-				}
-			});//end ajax
-		});//end keyup
-		
-
+			
 		$("#vDEL").click(function() {
 			event.preventDefault();
 			$("#Variation").children(".VRI").last().remove();
@@ -71,56 +58,29 @@
 			}
 		});
 		
-		$("#submitBtn").click(submit); //submitBtn end
-		
-		
-	});//end ready 
-	
-		 function submit() {//동기로 구현
-			
-			if ($("#gcode").val().length == 0) {
-				alert("제품코드를 입력해주세요.");
-				$("#gcode").focus();
-				event.preventDefault();
-			}else if ($("#gname").val().length == 0) {
-				alert("제품이름을 입력해주세요.");
-				$("#gname").focus();
-				event.preventDefault();
-			}else if ($("#gprice").val().length == 0) {
-				alert("제품가격을 입력해주세요.");
-				$("#gprice").focus();
-				event.preventDefault();
-			}else if ($("#gamount").val().length == 0) {
-				alert("재고수량을 입력해주세요.");
-				$("#gamount").focus();
-				event.preventDefault();
-			}else if ($("#result").text() == "코드 중복") {
-				alert("중복된 코드입니다. 다시입력해주세요.");
-				$("#gcode").focus();
-				event.preventDefault();
+		$("#goodsForm").submit(function(event) {
+			var inputCheck = true;
+			$("#goodsForm").children("input").each(function() {
+				if (this.value.length < 1) {
+					inputCheck = false;
+					return false;
+				}
+			});
+			if (!inputCheck){
+				alert("모든 칸을 채워주세요.");
 			}else {
-				goodsInsert();
-				imageUpload();	
+				if ($("#image").val().length != 0) {
+					imageUpload();
+				}
+				delVriBud();
+				goodsUpdate();
 				insertVariation();
 				insertBundle();
-				location.href = "afterInsert"; //후에 변경완료페이지로 이동
+				alert("수정이 완료되었습니다.");
 			}
-		}
-		
-	
-	   function goodsInsert(){//제품 db추가
-	    	var queryString = $("#goodsForm").serialize() ;
-	    	$.ajax({
-	    		type : 'post', 
-	    		url : 'insertGoods', 
-	    		data : queryString, 
-	    		dataType : 'json' ,
-	    		async:false
-	    		});
-	  
-	    }
-	
-
+			return inputCheck;
+		});//submit end
+	});//ready end
 	
 	function imageUpload() {//이미지 저장, imageUpload의 dir변경
 		var form = new FormData();
@@ -140,23 +100,20 @@
 		});//end ajax
 	}//imageUpload end
 	
-	
 	function insertVariation() {//each를 이용해서  variation 저장
-		var gcode = $("#gcode").val();
 		$(".VRI").each(function(i, element) {
 			var vcategory = $(this).children("input[name=vcategory]").val();
 		$.ajax({
 			url:"insertVariation",
 			type: "get",
 			async:false,
-			data: {gcode: gcode , vcategory : vcategory}, 
+			data: {gcode: "${gdto.gcode}", vcategory : vcategory}, 
 			dataType: "text"
 		});//end ajax
 		});//each end
 	}//insertVariation end
 	
-	function insertBundle() {//for 이용해서  bundle 저장
-		var gcode = $("#gcode").val();
+	function insertBundle() {//each를 이용해서  bundle 저장
 		$(".BUD").each(function(i, element) {
 			var bcategory = $(this).children("input[name=bcategory]").val();
 			var bprice = $(this).children("input[name=bprice]").val();
@@ -164,49 +121,80 @@
 				url:"insertBundle",
 				type: "get",
 				async:false,
-				data: {gcode: gcode, bcategory : bcategory, bprice: bprice }, 
+				data: {gcode: "${gdto.gcode}", bcategory : bcategory, bprice: bprice }, 
 				dataType: "text"
 			});//end ajax
 		});//each end
 	}//insertBundle end
-
+	
+	function delVriBud() {//variation과 bundle 제거
+		$.ajax({
+			url:"delVriBud",
+			type: "get",
+			async:false,
+			data: {gcode: "${gdto.gcode}"},
+			dataType: "text"
+		});//end ajax
+	}//delVriBud end
+	
+	function goodsUpdate(){//제품 db추가
+    	var queryString = $("#goodsForm").serialize() ;
+    	$.ajax({
+    		type : 'post', 
+    		url : 'goodsUpdate', 
+    		data : queryString, 
+    		dataType : 'json' ,
+    		async:false
+    		});
+  
+    }
 </script>
 
-제품이미지: <input type="file" name="file" id="image"><br>
+제품이미지: <input type="file" name="file" id="image" ><br>
 <hr>
 
-<form id="goodsForm">
-<input type="hidden" name="gimage" id="gimage" value="null">
-제품코드:<input type="text" name="gcode" id="gcode">
-<span id="result"></span>
+<form id="goodsForm" action="CtrlGoods" >
+<input type="hidden" name="gcode" value="${gdto.gcode}">
+<input type="hidden" name="gimage" id="gimage" value="${gdto.gimage}">
+이미지명: <input type="text" id="fakeImage" value="${gdto.gimage}" disabled="disabled"><br>
+제품코드:${gdto.gcode}
 <br> 
-
 제품카테고리:
-	<label><input type="radio" name="gcategory" value="beverage" checked> beverage</label>
+	<label><input type="radio" name="gcategory" value="beverage"> beverage</label>
 	<label><input type="radio" name="gcategory" value="coffee"> coffee</label>
     <label><input type="radio" name="gcategory" value="liquid"> liquid</label><br> 
-제품 이름:<input type="text" name="gname" id="gname"><br> 
-제품단일 가격 :<input type="text" name="gprice" id="gprice"><br>
-제품 재고:<input type="text" name="gamount" id="gamount"><br>
-
+제품 이름:<input type="text" name="gname" value="${gdto.gname}"><br> 
+제품단일 가격 :<input type="text" name="gprice" value="${gdto.gprice}"><br>
+제품 재고:<input type="text" name="gamount" value="${gdto.gamount}"><br>
 
 <div id="Variation">
+<c:if test="${empty vlist}">
 	<span id="emptyVariation">종류없음</span>
+</c:if>
+<c:forEach var="vdto" items="${vlist}" varStatus="status" >
+	<div class='VRI'>
+	종류:<input type="text" name="vcategory" value="${vdto.vcategory}">
+	</div>
+</c:forEach>
 </div>
 <button id="vADD" >종류추가</button>
 <button id="vDEL">종류삭제</button><br>
 
 <div id="Bundle">
+<c:if test="${empty blist}">
 <span id="emptyBundle">번들없음</span>
+</c:if>
+<c:forEach var="bdto" items="${blist}" varStatus="status" >
+	<div class="BUD">
+	번들:<input type="text" name="bcategory" value="${bdto.bcategory}">
+	번들가격:<input type="text" name="bprice" value="${bdto.bprice}">
+	</div>
+</c:forEach>
 </div>
 <button id="bADD">번들추가</button>
 <button id="bDEL">번들삭제</button><br>
-
-<input type="reset" value="취소"><br>
-</form>
 <hr>
 
-
-
-<button id="submitBtn">등록</button>
+<input type="submit" value="수정">
+</form>
 

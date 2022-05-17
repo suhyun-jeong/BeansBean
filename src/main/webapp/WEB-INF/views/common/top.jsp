@@ -16,6 +16,7 @@
 	<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
 			<a href="CtrlGoods">상품 관리</a>
 			<a href="goodsinsert">상품 등록</a>
+<<<<<<< HEAD
 		<p><b>${login.username}</b> 님</p>
 		
 	<a href="logout">로그아웃</a>
@@ -25,6 +26,8 @@
 		<c:if test="${login.usercode == 10}">	<!-- 관리자 페이지 -->
 			<a href="">판매 관리</a>
 		</c:if>
+=======
+>>>>>>> 29c1b838cc59025f5a46142b0794cff116e5c012
 	</c:if>
 </c:if>
 

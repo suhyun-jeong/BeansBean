@@ -9,7 +9,31 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-	
+	$(function() {
+		$(".goodsDelete").click(function() {
+			var gcode = $(this).attr("data-gcode");
+			var delBtn =$(this);
+			$.ajax({
+				url:"goodsDelete",
+				type: "get",
+				data: {gcode : gcode}, 
+				dataType: "text",
+				success: function (data,status,xhr) {
+					delBtn.parents().filter("tr").remove();
+				},
+				error: function(xhr,status,error) {
+					console.log(error);
+				}
+			});//ajax end
+		});//goodsDelete end
+		
+		$(".goodsUpdate").click(function() {
+			var gcode = $(this).attr("data-gcode");
+			location.href = "goodsUpdatePage?gcode="+gcode;
+		});
+		
+		
+	})//ready end
 </script>
 <table border="1">
 	<tr>
@@ -27,8 +51,8 @@
 	
    
 <c:forEach var="dto" items="${AllGoods}" varStatus="status">	
-	<tr>
-	<td><img src="images/${dto.gimage}" border="0" align="center" width="150"></td>
+	<tr id="${dto.gcode}">
+	<td><img src="images/${dto.gimage}" border="0" align="center" width="100"></td>
 	<td>${dto.gcode}</td>
 	<td>${dto.gcategory}</td>
 	<td>${dto.gname}</td>
@@ -56,8 +80,8 @@
 			</c:forEach>
 		</table>
 	</td>
-	<td><button>수정</button></td>
-	<td><button>삭제</button></td>
+	<td><button class="goodsUpdate" data-gcode="${dto.gcode}">수정</button></td>
+	<td><button class="goodsDelete" data-gcode="${dto.gcode}">삭제</button></td>
 	</tr>
 	</c:forEach>
 		

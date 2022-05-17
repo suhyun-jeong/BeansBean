@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dto.Cook_BrdDTO;
 import com.dto.Info_BrdDTO;
+import com.dto.IngrementDTO;
 
 @Repository
 public class BoardDAO {
@@ -49,6 +50,16 @@ public class BoardDAO {
 	public Info_BrdDTO Info_BRD_DetailView(int num) {
 		Info_BrdDTO dto = session.selectOne("BoardMapper.Info_selectOne",num);
 		return dto;
+	}
+
+	public int CookNumGet() {
+		// TODO Auto-generated method stub
+		return session.selectOne("BoardMapper.CookNumGet");
+	}
+
+	public void ingrementInsert(IngrementDTO ingre) {
+		// TODO Auto-generated method stub
+		session.insert("BoardMapper.ingrementInsert",ingre);
 	}
 	
 }

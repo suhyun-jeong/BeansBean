@@ -11,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.Cook_BrdDTO;
 import com.dto.Info_BrdDTO;
+import com.dto.IngrementDTO;
 import com.service.BoardService;
 
 @Controller
@@ -77,11 +79,21 @@ public class BoardController {
 		return "Cook_BRD_write";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/Cook_BRD_insert", method=RequestMethod.POST)
-	public String Cook_BRD_insert(@ModelAttribute Cook_BrdDTO cook ) {
+	public void Cook_BRD_insert(@ModelAttribute Cook_BrdDTO cook ) {
 		//래시피 게시글 쓰기 기능
 		service.Cook_BRD_insert(cook);
-		return "redirect:/Cook_BRD";
+		//System.out.println(cook);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "ingrementInsert", method=RequestMethod.GET)
+	public void ingrementInsert(IngrementDTO ingre) {
+		int num = service.CookNumGet();
+		ingre.setNum(num);
+		service.ingrementInsert(ingre);
+		
 	}
 	
 	@RequestMapping("/Cook_BRD_DetailView" )
