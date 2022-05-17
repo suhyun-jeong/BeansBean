@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+
+	<!-- 상품 한 개 주문하기 -->
+	<insert id="oneGoodsOrder" parameterType="OrderinfoDTO">
+		INSERT INTO ORDERINFO
+		VALUES(
+		<choose>	
+			<when test="num == 0">
+				ORDERINFO_SEQ.nextval, 
+			</when>
+			<otherwise>
+				#{num}, 
+			</otherwise>
+		</choose>
+			#{userid}, 
+			#{gcode}, #{gname}, #{bcategory}, #{vcategory}, #{gprice}, #{gamount}, 
+			#{ordername}, #{post}, #{addr1}, #{addr2}, #{phone1}, #{phone2}, #{phone3}, #{paymethod}, SYSDATE, #{gimage}
+		)
+	</insert>
+
+</mapper>

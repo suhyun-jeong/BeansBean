@@ -61,26 +61,7 @@
 					}
 				});  //end ajax
 				
-				//장바구니에 담기
-				$("#cart").on("click",function(){
-					console.log("cartadd 버튼클릭");
-	
-				$.ajax({
-					url: "loginCheck/cartAdd",
-					type: "POST",
-					data: form,
-					success: function (result){
-					/* 	if(result == "0"){
-							alert("옵션을 1개이상 선택해주세요.")
-						} else if(result <= "1"){
-							alert("상품을 장바구니에 담았습니다.")
-						} */
-					}
-				
-				});
-				
-				});//end event
-				
+
 		});//end ready
 		
 			
@@ -146,7 +127,7 @@ ${goodsDetail.gname}
 							<!-- 회원일 때 10(관리자)/20(일반)/30(사업자) -->
 							<c:if test="${not empty login}">
 							<c:choose>
-								<c:when test="${login.usercode eq '10'}">
+								<c:when test="${login.usercode eq '10' || login.usercode eq '30'}">
 									<!-- vcategory -->
 									<li style='padding-left: 30px'>
 									<select	class="select_change" name="vcategory" id="vcategory" style="width: 300px">
@@ -169,14 +150,6 @@ ${goodsDetail.gname}
 											
 									</select></li>
 								</c:when>
-								<c:otherwise>
-									<!-- bcategory -->
-									<li style='padding-left: 30px'>
-									<select	class="select_change" name="bcategory" id="bcategory" style="width: 300px">
-										<option selected>bundle</option>
-										
-									</select></li>
-								</c:otherwise>
 							</c:choose>
 							</c:if>
 							
@@ -205,7 +178,4 @@ ${goodsDetail.gname}
 		&nbsp;&nbsp;
 		<button id="cart">장바구니</button>
 	</div>
-
-
-
 </FORM>

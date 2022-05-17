@@ -26,11 +26,8 @@
 				<value>classpath:com/config/MemberMapper.xml</value> <!--Mapper등록  -->
 				<value>classpath:com/config/ManagerMapper.xml</value> <!--Mapper등록  -->
 				<value>classpath:com/config/GoodsMapper.xml</value>
-<<<<<<< HEAD
 				<value>classpath:com/config/BoardMapper.xml</value>
-=======
 				<value>classpath:com/config/OrderMapper.xml</value>
->>>>>>> eb1840dd75a83acab25ca3badd393a99ac4df445
 			</list>
 		</property>
 		<!-- <property name="mapperLocations" value="classpath:com/dao/*.xml" /> -->
