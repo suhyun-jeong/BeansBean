@@ -21,7 +21,7 @@
 	<H1>주문 완료 화면입니다.</H1>
 
 	<jsp:include page="common/top.jsp" flush="true" /><br>	<!-- 상단 메뉴 바 -->
-	<jsp:include page="common/manu.jsp" flush="true" /><br>
+	<jsp:include page="common/menu.jsp" flush="true" /><br>
 
 	<hr>
 	

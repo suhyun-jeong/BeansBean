@@ -42,7 +42,7 @@
 	 where userid=#{userid}
 </select>
 
-<<<<<<< HEAD
+
 <select id="cartByNum" parameterType="int" 
 	resultType="CartDTO">
 	 select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
@@ -50,7 +50,7 @@
 	 where num=#{num}
 	</select>
 
-=======
+
 	<select id="cartByNum" parameterType="int" 
 	resultType="CartDTO">
 	  select num,userid,gCode,gName,gPrice, bCategory,vCategory,gAmount,gImage
@@ -81,5 +81,4 @@
 	 where num=#{num}
 	</update>
 
->>>>>>> 372abd36b050dc1e9d832db763d5d556cd684b77
 </mapper>
